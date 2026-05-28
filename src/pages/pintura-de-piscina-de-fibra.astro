@@ -1,0 +1,200 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+
+const serviceHighlights = [
+  {
+    title: "Preparação",
+    text: "Limpamos, lixamos e preparamos a superfície para garantir aderência correta e acabamento uniforme.",
+  },
+  {
+    title: "Gel Coat",
+    text: "Aplicamos revestimento de proteção para preservar a fibra de vidro contra sol, umidade e desgaste.",
+  },
+  {
+    title: "Acabamento",
+    text: "Cuidamos da pintura para devolver cor, brilho e uma aparência renovada para sua piscina de fibra.",
+  },
+];
+
+const gelCoatSteps = [
+  "Lave e limpe toda a superfície da piscina, removendo sujeira, gordura e resíduos.",
+  "Lixe a fibra para corrigir imperfeições e criar uma base uniforme para a pintura.",
+  "Aplique o gel coat em camadas uniformes, usando ferramentas adequadas como rolo ou pincel.",
+  "Respeite o intervalo indicado pelo fabricante entre as camadas e durante a cura final.",
+];
+---
+
+<BaseLayout
+  title="Pintura de Piscina de Fibra - Casa e Piscina"
+  description="Se você está pensando em pintar sua própria piscina de fibra, é importante seguir alguns passos essenciais para garantir um resultado perfeito."
+  canonical="https://casaepiscina.com.br/pintura-de-piscina-de-fibra/"
+  image="/image/pintura-de-piscina-de-fibra.jpg"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Pintura de Piscina de Fibra", url: "/pintura-de-piscina-de-fibra/" }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.74), rgba(14, 36, 48, 0.62)), url('/image/pintura-de-piscina-de-fibra-BH.jpg')`}
+      aria-hidden="true"
+    />
+    <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
+      <div class="mx-auto max-w-5xl text-white">
+        <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
+        <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">
+          Pintura de Piscina de Fibra
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/88">
+          Renove a cor, proteja a fibra e deixe sua piscina pronta para muitos anos de uso.
+        </p>
+        <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Quero Fazer um orçamento!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
+      <article class="min-w-0">
+        <div class="max-w-4xl">
+          <p class="eyebrow mb-4">Serviço especializado</p>
+          <h2 class="text-3xl font-black leading-tight text-brand-ink md:text-5xl">
+            O Segredo para uma Pintura Duradoura
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Se você está pensando em pintar sua própria piscina de fibra, é importante seguir alguns passos essenciais para garantir um resultado perfeito. Preparamos algumas dicas para ajudá-lo nessa tarefa e garantir que sua piscina fique protegida e com uma aparência incrível.
+          </p>
+          <figure class="mt-8">
+            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src="/image/pintura-de-piscina-de-fibra.jpg" alt="Pintura de piscina de fibra com Gel Coat" loading="eager" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Pintura de piscina de fibra com Gel Coat para proteger e renovar o acabamento.</figcaption>
+          </figure>
+          <div class="mt-8 rounded-lg border border-brand-line bg-[#f4f7f8] p-6">
+            <p class="text-xl font-black text-brand-ink">Quer renovar sua piscina com segurança?</p>
+            <a class="btn btn-primary mt-5" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+              Quero orçamento sem compromisso
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          {serviceHighlights.map((item) => (
+            <section class="card card-hover p-6">
+              <h3 class="text-2xl font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-4 leading-7 text-brand-muted">{item.text}</p>
+            </section>
+          ))}
+        </div>
+
+        <section class="mt-14 rounded-lg bg-brand-ink p-7 text-white md:p-9">
+          <h3 class="text-2xl font-black leading-tight md:text-3xl">Atendemos em Toda Região Metropolitana de Belo Horizonte</h3>
+          <p class="mt-5 text-lg leading-8 text-white/78">
+            Se a pintura da sua piscina de fibra está desbotada, manchada ou desgastada, chame nossa equipe pelo WhatsApp. Avaliamos o estado da fibra e indicamos a melhor solução para pintura, reforma ou reparo.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+
+        <section id="preparacao" class="mt-14 grid gap-10 scroll-mt-28 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <div>
+            <h2 class="section-title">Preparação Adequada</h2>
+            <p class="mt-6 text-lg leading-8 text-brand-muted">
+              Antes de iniciar a pintura, é crucial preparar adequadamente o local. Certifique-se de lavar e limpar bem a superfície da piscina, removendo qualquer sujeira ou resíduo que possa interferir na aderência da tinta. Além disso, é importante lixar bem a superfície para obter uma base uniforme e livre de imperfeições.
+            </p>
+          </div>
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/como-pintar-piscina-de-fibra-de-vidro.jpg" alt="Como pintar piscina de fibra de vidro" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Como pintar piscina de fibra de vidro com preparação correta da superfície.</figcaption>
+          </figure>
+        </section>
+
+        <section id="gel-coat" class="mt-14 scroll-mt-28">
+          <h2 class="section-title">Gel Coat: O Protetor e Realçador da Piscina</h2>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+            <p>O gel coat é uma resina especial utilizada como revestimento de cor e proteção em piscinas de fibra. Essa tinta mais espessa atua como uma camada de proteção, preservando a fibra de vidro do desgaste causado pelo tempo, raios ultravioleta e umidade.</p>
+            <p>Ao aplicar o gel coat na sua piscina, você estará proporcionando uma camada extra de proteção e realçando sua beleza.</p>
+          </div>
+        </section>
+
+        <section id="aplicacao" class="mt-14 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <figure class="md:order-1">
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/tinta-para-pintura-de-piscina-de-fibra.jpg" alt="Tinta para pintura de piscina de fibra" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Tinta para pintura de piscina de fibra aplicada com cuidado técnico.</figcaption>
+          </figure>
+          <div class="md:order-2">
+            <h2 class="section-title">Aplicação do Gel Coat: Passo a Passo</h2>
+            <p class="mt-6 text-lg leading-8 text-brand-muted">
+              A aplicação do gel coat requer cuidado e atenção aos detalhes. Recomendamos seguir as instruções do fabricante para garantir um processo correto. Certifique-se de aplicar o gel coat em camadas uniformes, utilizando as ferramentas adequadas, como um rolo ou pincel.
+            </p>
+            <p class="mt-5 text-lg leading-8 text-brand-muted">
+              Tenha em mente que o gel coat é recomendado como um acabamento de alta resistência ao intemperismo, sendo ideal para uso em piscinas, toboáguas e brinquedos aquáticos de alvenaria, fibra ou azulejos.
+            </p>
+          </div>
+        </section>
+
+        <section class="mt-14 scroll-mt-28 rounded-lg border border-brand-line bg-white p-7 shadow-sm shadow-brand-ink/5 md:p-9">
+          <h2 class="section-title">Aplicação do Gel Coat: Passo a Passo</h2>
+          <ul class="mt-7 space-y-4 text-lg leading-8 text-brand-muted">
+            {gelCoatSteps.map((step) => (
+              <li class="border-l-4 border-brand-ink pl-5">{step}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="cura" class="mt-14 grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <div>
+            <h2 class="section-title">Seja Paciente: Permita a Cura Adequada</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>Após a aplicação do gel coat, é essencial permitir a cura adequada. Isso significa aguardar o tempo necessário para que a tinta seque completamente, seguindo as recomendações do fabricante. Evite o uso da piscina durante esse período, pois a cura adequada é essencial para garantir a durabilidade e a resistência da pintura.</p>
+              <p>Tenha em mente que a pintura de piscinas de fibra requer habilidade e conhecimento técnico. Se você não se sentir confortável em realizar esse processo por conta própria, é sempre recomendado buscar a ajuda de profissionais especializados.</p>
+              <p>Agora que você está familiarizado com os aspectos básicos da pintura de piscinas de fibra, lembre-se de seguir as dicas de preparação, utilizar o gel coat adequado e permitir a cura adequada. Com cuidado e dedicação, sua piscina ganhará uma nova vida, proporcionando momentos refrescantes e divertidos por muitos anos.</p>
+            </div>
+          </div>
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/pintura-de-piscina-de-fibra-BH.jpg" alt="Protegendo a piscina com pintura da fibra de vidro" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Protegendo a piscina com uma pintura da fibra de vidro.</figcaption>
+          </figure>
+        </section>
+
+        <section id="orcamento" class="mt-14 scroll-mt-28 bg-[#f4f7f8] p-7 md:p-9">
+          <h3 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">
+            Estamos aqui para ajudar!
+          </h3>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Se você está procurando por serviços de reforma, reparo ou conserto de piscinas de fibra em Belo Horizonte, conte conosco! Nossa equipe atende em toda região metropolitana de Belo Horizonte. Você pode entrar em contato pelo telefone ou clicar abaixo e nos chamar no WhatsApp para fazer um orçamento sem compromisso.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+      </article>
+
+      <aside class="lg:sticky lg:top-28">
+        <div class="rounded-lg bg-brand-ink p-6 text-white shadow-xl shadow-brand-ink/10">
+          <p class="text-xl font-black">Orçamento pelo WhatsApp</p>
+          <p class="mt-3 text-sm leading-6 text-white/75">Conte como está a pintura da sua piscina e receba orientação para pintura, reforma, reparo ou Gel Coat.</p>
+          <a class="btn btn-primary mt-5 w-full" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero orçamento
+          </a>
+        </div>
+
+        <nav class="card mt-5 p-6" aria-label="Conteúdo da página">
+          <p class="text-lg font-black text-brand-ink">Nesta página</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            <li><a href="#preparacao">Preparação adequada</a></li>
+            <li><a href="#gel-coat">Gel Coat</a></li>
+            <li><a href="#aplicacao">Aplicação do Gel Coat</a></li>
+            <li><a href="#cura">Cura adequada</a></li>
+            <li><a href="#orcamento">Orçamento sem compromisso</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <CTAWhatsapp />
+</BaseLayout>

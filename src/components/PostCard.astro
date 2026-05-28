@@ -1,0 +1,14 @@
+---
+const { href, title, description, image, alt, label = "Ver serviço" } = Astro.props;
+---
+
+<article class="card card-hover overflow-hidden">
+  <a href={href}>
+    <img class="aspect-[4/3] w-full object-cover" src={image} alt={alt} loading="lazy" />
+  </a>
+  <div class="p-6">
+    <p class="card-title"><a class="hover:text-brand-ink" href={href}>{title}</a></p>
+    <p class="mt-3 text-sm leading-6 text-brand-muted">{description}</p>
+    <a class="btn btn-ocean mt-5" href={href}>{label}</a>
+  </div>
+</article>

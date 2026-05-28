@@ -1,0 +1,189 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+
+const serviceHighlights = [
+  {
+    title: "Caixa D'agua",
+    text: "A caixa da sua casa ou condomínio está furada ou com vazamentos? Entre em contato com nossa equipe agora mesmo.",
+  },
+  {
+    title: "Qualidade",
+    text: "Nossa missão é reformar sua caixa e deixá-la como nova, oferecendo serviços de reparo que superam suas expectativas em durabilidade.",
+  },
+  {
+    title: "Reparo",
+    text: "Confie em nossa expertise em reparos de caixa d'água de fibra, onde a qualidade é nossa prioridade máxima.",
+  },
+];
+---
+
+<BaseLayout
+  title="Manutenção de Caixa d'água - Casa e Piscina"
+  description="Reforma e manutenção de caixas d'água é o nosso forte! Resolvemos furos, vazamentos e entregamos uma caixa limpa e livre de contaminação."
+  canonical="https://casaepiscina.com.br/reforma-de-caixa-da-agua/"
+  image="/image/conserto-de-piscina-de-fibra.webp"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Reforma de Caixa d'agua em BH", url: "/reforma-de-caixa-da-agua/" }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.78), rgba(14, 36, 48, 0.64)), url('/image/conserto-de-piscina-de-fibra.webp')`}
+      aria-hidden="true"
+    />
+    <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
+      <div class="mx-auto max-w-5xl text-white">
+        <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
+        <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">
+          Reforma de Caixa d'agua em BH
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/88">
+          Somos uma empresa especializada em reforma e manutenção de caixa d'água de fibra de vidro!
+        </p>
+        <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Quero Fazer um orçamento!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
+      <article class="min-w-0">
+        <div class="max-w-4xl">
+          <p class="eyebrow mb-4">Serviço especializado</p>
+          <h2 class="text-3xl font-black leading-tight text-brand-ink md:text-5xl">
+            Problemas na Caixa D'água? Deixe Conosco!
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Reforma e manutenção de caixas d'água de fibra de vidro é o nosso forte! Resolvemos furos, vazamentos e entregamos uma caixa limpa e livre de contaminação. Seu lar merece o melhor.
+          </p>
+          <figure class="mt-8">
+            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra.webp" alt="Reforma e manutenção de caixa d'água de fibra em BH" loading="eager" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Serviço especializado em fibra para reparar vazamentos, furos e trincas.</figcaption>
+          </figure>
+          <div class="mt-8 rounded-lg border border-brand-line bg-[#f4f7f8] p-6">
+            <p class="text-xl font-black text-brand-ink">Entre em contato agora mesmo!</p>
+            <a class="btn btn-primary mt-5" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+              Quero orçamento sem compromisso
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          {serviceHighlights.map((item) => (
+            <section class="card card-hover p-6">
+              <h3 class="text-2xl font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-4 leading-7 text-brand-muted">{item.text}</p>
+            </section>
+          ))}
+        </div>
+
+        <section id="atendimento" class="mt-14 rounded-lg bg-brand-ink p-7 text-white md:p-9">
+          <h3 class="text-2xl font-black leading-tight md:text-3xl">Atendemos em Toda Região Metropolitana de Belo Horizonte</h3>
+          <p class="mt-5 text-lg leading-8 text-white/78">
+            Você que mora em Belo Horizonte ou qualquer cidade da nossa região metropolitana pode ficar tranquilo que atendemos você. Basta entrar em contato agora mesmo pelo WhatsApp, que faremos um orçamento sem compromisso. Nossa empresa está preparada para lhe atender.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+
+        <section class="mt-14 rounded-lg border border-brand-line bg-white p-7 shadow-sm shadow-brand-ink/5 md:p-9">
+          <h3 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">Solicite um Orçamento Agora Mesmo</h3>
+          <p class="mt-5 text-lg leading-8 text-brand-muted">
+            Se você mora em Belo Horizonte e região metropolitana, entre em contato agora mesmo!
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+
+        <section id="manutencao" class="mt-14 grid gap-10 scroll-mt-28 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <div>
+            <h2 class="section-title">Manutenção de caixa d'água</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>A caixa d'água desempenha um papel fundamental no fornecimento seguro e contínuo de água para nossas residências. No entanto, com o tempo, podem surgir problemas como vazamentos e trincas, comprometendo a funcionalidade e a qualidade da água armazenada.</p>
+              <p>É aí que entra a nossa especialidade em reforma de caixas d'água, oferecendo soluções eficazes e duradouras para garantir um abastecimento confiável.</p>
+            </div>
+          </div>
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-de-piscina-de-fibra-jpg.webp" alt="Manutenção de caixa d'água com reparo em fibra de vidro" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Reparo em fibra para recuperar a vedação e a estrutura da caixa d'água.</figcaption>
+          </figure>
+        </section>
+
+        <section id="fibra-polietileno" class="mt-14 scroll-mt-28">
+          <h2 class="section-title">Reforma de Caixa d'água de Fibra e Polietileno</h2>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+            <p>Seja a sua caixa d'água de fibra de vidro, polietileno ou amianto, nossa equipe qualificada está preparada para lidar com qualquer tipo de problema. Realizamos reforma e conserto de vazamentos, trincas e furos em caixas d'água, utilizando técnicas avançadas e materiais de alta qualidade.</p>
+            <p>Nosso objetivo é garantir que sua caixa d'água esteja em perfeitas condições, evitando desperdício de água e assegurando um fornecimento contínuo e seguro.</p>
+            <p>Além dos reparos necessários, também oferecemos serviços de manutenção de caixas d'água, com o intuito de preservar a qualidade da água armazenada. Realizamos limpezas regulares, remoção de resíduos e inspeções detalhadas para identificar qualquer problema em potencial.</p>
+            <p>Com uma manutenção adequada, sua caixa d'água estará protegida contra acúmulo de sujeira, proliferação de bactérias e outros riscos à saúde.</p>
+          </div>
+        </section>
+
+        <section id="impermeabilizacao" class="mt-14 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <figure class="md:order-1">
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reformando-piscina-em-bh.webp" alt="Impermeabilização de caixa d'água usando fibra de vidro" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Aplicação de fibra de vidro para vedação e proteção contra vazamentos.</figcaption>
+          </figure>
+          <div class="md:order-2">
+            <h2 class="section-title">Impermeabilização de caixa d'agua usando Fibra de Vidro</h2>
+            <p class="mt-6 text-lg leading-8 text-brand-muted">
+              A impermeabilização adequada da caixa d'água é essencial para evitar vazamentos e infiltrações indesejadas. Nosso serviço inclui a aplicação de revestimentos impermeabilizantes de alta qualidade, especialmente projetados para caixas d'água de fibra de vidro. Dessa forma, garantimos uma vedação eficiente, protegendo sua caixa d'água contra danos causados por umidade e prolongando sua vida útil.
+            </p>
+          </div>
+        </section>
+
+        <section id="conserto" class="mt-14 scroll-mt-28">
+          <h2 class="section-title">conserto de caixa d'água de fibra de vidro</h2>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+            <p>Se você está enfrentando vazamentos em suas instalações ou percebeu sinais de infiltração em sua caixa d'água, não hesite em buscar nossos serviços especializados.</p>
+            <p>Nossa equipe de profissionais altamente qualificados está pronta para identificar e solucionar os problemas, fornecendo uma reforma completa e eficaz. Além disso, oferecemos serviços de impermeabilização para garantir a proteção contínua contra vazamentos futuros.</p>
+            <p>Priorize a qualidade da água armazenada. Entre em contato conosco hoje mesmo para obter mais informações e solicitar um orçamento personalizado. Ver <a class="font-black text-brand-ink underline underline-offset-4" href="/manutencao-de-piscina/">manutenção de piscina</a> e <a class="font-black text-brand-ink underline underline-offset-4" href="/reforma-de-piscina-de-fibra-em-belo-horizonte/">Reforma de Piscina</a>.</p>
+          </div>
+        </section>
+
+        <section id="orcamento" class="mt-14 scroll-mt-28 bg-[#f4f7f8] p-7 md:p-9">
+          <h3 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">
+            Atendemos em Toda Região Metropolitana de Belo Horizonte
+          </h3>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Precisa reformar, vedar ou recuperar sua caixa d'água? Chame nossa equipe pelo WhatsApp e solicite um orçamento sem compromisso.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+      </article>
+
+      <aside class="lg:sticky lg:top-28">
+        <div class="rounded-lg bg-brand-ink p-6 text-white shadow-xl shadow-brand-ink/10">
+          <p class="text-xl font-black">Orçamento pelo WhatsApp</p>
+          <p class="mt-3 text-sm leading-6 text-white/75">Conte o problema da sua caixa d'água e receba orientação para reforma, manutenção, vedação ou vazamento.</p>
+          <a class="btn btn-primary mt-5 w-full" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero orçamento
+          </a>
+        </div>
+
+        <nav class="card mt-5 p-6" aria-label="Conteúdo da página">
+          <p class="text-lg font-black text-brand-ink">Nesta página</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            <li><a href="#atendimento">Atendimento em BH</a></li>
+            <li><a href="#manutencao">Manutenção de caixa d'água</a></li>
+            <li><a href="#fibra-polietileno">Fibra e polietileno</a></li>
+            <li><a href="#impermeabilizacao">Impermeabilização</a></li>
+            <li><a href="#conserto">Conserto de caixa d'água</a></li>
+            <li><a href="#orcamento">Orçamento sem compromisso</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <CTAWhatsapp />
+</BaseLayout>

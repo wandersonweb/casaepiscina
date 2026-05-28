@@ -1,0 +1,211 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig, whatsappUrl } from "../data/site";
+
+const phoneDigits = siteConfig.whatsapp;
+const phoneDisplay = siteConfig.phone;
+const email = siteConfig.email;
+const formSubmitUrl = `https://formsubmit.co/${email}`;
+const whatsappBaseUrl = `https://api.whatsapp.com/send?phone=${phoneDigits}&text=`;
+
+const contactMethods = [
+  {
+    title: "WhatsApp",
+    text: phoneDisplay,
+    href: whatsappUrl("Olá, gostaria de solicitar um orçamento para piscina de fibra."),
+  },
+  {
+    title: "E-mail",
+    text: email,
+    href: `mailto:${email}`,
+  },
+  {
+    title: "Atendimento",
+    text: "Belo Horizonte e região metropolitana",
+    href: "/empresa-asp/",
+  },
+];
+
+const technicalLeads = ["Bruno Martins", "Adriano Junior"];
+---
+
+<BaseLayout
+  title="Contato | Casa e Piscina"
+  description="Entre em contato com a Casa e Piscina pelo WhatsApp ou formulário para solicitar orçamento de reforma, conserto, pintura e manutenção de piscina de fibra."
+  canonical="https://casaepiscina.com.br/contato/"
+  image="/image/conserto-de-piscina-de-fibra.webp"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Contato", url: "/contato/" }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.78), rgba(14, 36, 48, 0.64)), url('/image/empresa-de-manutencao-de-piscina.webp')`}
+      aria-hidden="true"
+    />
+    <div class="relative container-site grid min-h-[520px] gap-10 py-20 md:grid-cols-[1fr_0.78fr] md:items-center md:py-24">
+      <div class="text-white">
+        <p class="eyebrow text-white/78">Contato</p>
+        <h1 class="mt-5 max-w-4xl text-4xl font-black leading-tight md:text-6xl">
+          Solicite seu orçamento com a Casa e Piscina
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-white/86">
+          Fale conosco para reforma, conserto, restauração, pintura, vazamentos, trincas e manutenção de piscina de fibra em Belo Horizonte e região metropolitana.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="btn btn-lg btn-primary" href={whatsappUrl("Olá, gostaria de solicitar um orçamento sem compromisso.")} target="_blank" rel="nofollow noopener">
+            Chamar no WhatsApp
+          </a>
+          <a class="btn btn-lg border border-white/30 bg-white/10 text-white hover:bg-white/16" href={`mailto:${email}`}>
+            Enviar e-mail
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white p-6 shadow-xl shadow-brand-ink/20 md:p-7">
+        <p class="text-sm font-black uppercase tracking-[0.12em] text-brand-muted">Atendimento direto</p>
+        <div class="mt-6 space-y-4">
+          {contactMethods.map((method) => (
+            <a class="flex items-start gap-4 rounded-lg border border-brand-line p-4 transition-colors duration-200 hover:border-brand-ink" href={method.href} target={method.href.startsWith("http") ? "_blank" : undefined} rel={method.href.startsWith("http") ? "nofollow noopener" : undefined}>
+              <span class="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-ink text-white" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+              </span>
+              <span>
+                <span class="block text-lg font-black text-brand-ink">{method.title}</span>
+                <span class="mt-1 block leading-7 text-brand-muted">{method.text}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div>
+        <p class="eyebrow mb-4">Orçamento</p>
+        <h2 class="section-title">Conte o que está acontecendo com sua piscina</h2>
+        <p class="lead mt-5">
+          Preencha o formulário para enviar os dados por e-mail e abrir uma conversa no WhatsApp com a nossa equipe. Assim conseguimos avaliar melhor o problema e orientar o próximo passo.
+        </p>
+
+        <div class="mt-8 rounded-lg bg-[#f4f7f8] p-6">
+          <h3 class="text-2xl font-black text-brand-ink">Responsáveis técnicos</h3>
+          <ul class="mt-5 space-y-3 text-lg font-bold text-brand-muted">
+            {technicalLeads.map((name) => <li>{name}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <form
+        id="contact-form"
+        class="card p-6 md:p-8"
+        action={formSubmitUrl}
+        method="POST"
+        target="formsubmit-frame"
+      >
+        <input type="hidden" name="_subject" value="Novo orçamento pelo site Casa e Piscina" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_autoresponse" value="Recebemos sua solicitação de orçamento na Casa e Piscina. Nossa equipe vai analisar as informações e retornar pelo WhatsApp ou e-mail informado." />
+        <input type="hidden" name="_next" value="https://casaepiscina.com.br/contato/" />
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <label class="block">
+            <span class="text-sm font-black uppercase tracking-[0.08em] text-brand-ink">Nome</span>
+            <input class="mt-2 w-full rounded-md border border-brand-line bg-white px-4 py-3 text-brand-ink outline-none transition-colors duration-200 focus:border-brand-ink" type="text" name="nome" autocomplete="name" required />
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-black uppercase tracking-[0.08em] text-brand-ink">WhatsApp</span>
+            <input class="mt-2 w-full rounded-md border border-brand-line bg-white px-4 py-3 text-brand-ink outline-none transition-colors duration-200 focus:border-brand-ink" type="tel" name="whatsapp" autocomplete="tel" required />
+          </label>
+        </div>
+
+        <label class="mt-5 block">
+          <span class="text-sm font-black uppercase tracking-[0.08em] text-brand-ink">E-mail para confirmação</span>
+          <input class="mt-2 w-full rounded-md border border-brand-line bg-white px-4 py-3 text-brand-ink outline-none transition-colors duration-200 focus:border-brand-ink" type="email" name="email" autocomplete="email" required />
+        </label>
+
+        <label class="mt-5 block">
+          <span class="text-sm font-black uppercase tracking-[0.08em] text-brand-ink">Cidade</span>
+          <input class="mt-2 w-full rounded-md border border-brand-line bg-white px-4 py-3 text-brand-ink outline-none transition-colors duration-200 focus:border-brand-ink" type="text" name="cidade" autocomplete="address-level2" required />
+        </label>
+
+        <label class="mt-5 block">
+          <span class="text-sm font-black uppercase tracking-[0.08em] text-brand-ink">Serviço desejado</span>
+          <select class="mt-2 w-full rounded-md border border-brand-line bg-white px-4 py-3 text-brand-ink outline-none transition-colors duration-200 focus:border-brand-ink" name="servico" required>
+            <option value="">Selecione uma opção</option>
+            <option>Reforma de piscina de fibra</option>
+            <option>Conserto de trincas ou vazamento</option>
+            <option>Pintura ou revitalização</option>
+            <option>Manutenção de piscina</option>
+            <option>Instalação de equipamentos</option>
+            <option>Reforma de caixa d'água</option>
+          </select>
+        </label>
+
+        <label class="mt-5 block">
+          <span class="text-sm font-black uppercase tracking-[0.08em] text-brand-ink">Mensagem</span>
+          <textarea class="mt-2 min-h-[150px] w-full rounded-md border border-brand-line bg-white px-4 py-3 text-brand-ink outline-none transition-colors duration-200 focus:border-brand-ink" name="mensagem" required placeholder="Conte se a piscina está com trincas, vazamentos, pintura desgastada, bolhas, manchas ou outro problema."></textarea>
+        </label>
+
+        <button class="btn btn-lg btn-primary mt-7 w-full" type="submit">
+          Enviar e abrir conversa no WhatsApp
+        </button>
+
+        <p id="form-status" class="mt-4 text-sm font-bold leading-6 text-brand-muted" aria-live="polite">
+          O formulário envia uma cópia para o e-mail da Casa e Piscina e uma confirmação para o e-mail informado.
+        </p>
+      </form>
+
+      <iframe name="formsubmit-frame" class="hidden" title="Envio do formulário"></iframe>
+    </div>
+  </section>
+
+  <section class="section bg-[#f4f7f8]">
+    <div class="container-site grid gap-6 md:grid-cols-3">
+      <article class="card p-7">
+        <h2 class="text-2xl font-black text-brand-ink">Resposta pelo WhatsApp</h2>
+        <p class="mt-4 leading-7 text-brand-muted">Ao enviar o formulário, abrimos uma conversa com a mensagem pronta para agilizar seu atendimento.</p>
+      </article>
+      <article class="card p-7">
+        <h2 class="text-2xl font-black text-brand-ink">Confirmação por e-mail</h2>
+        <p class="mt-4 leading-7 text-brand-muted">O FormSubmit registra a solicitação e envia uma confirmação para o e-mail informado no formulário.</p>
+      </article>
+      <article class="card p-7">
+        <h2 class="text-2xl font-black text-brand-ink">Avaliação técnica</h2>
+        <p class="mt-4 leading-7 text-brand-muted">A equipe analisa o caso e orienta sobre reforma, conserto, pintura, manutenção ou equipamentos.</p>
+      </article>
+    </div>
+  </section>
+
+  <script define:vars={{ whatsappBaseUrl }}>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form?.addEventListener("submit", () => {
+      const data = new FormData(form);
+      const message = [
+        "Olá, gostaria de solicitar um orçamento pelo site Casa e Piscina.",
+        `Nome: ${data.get("nome") || ""}`,
+        `WhatsApp: ${data.get("whatsapp") || ""}`,
+        `E-mail: ${data.get("email") || ""}`,
+        `Cidade: ${data.get("cidade") || ""}`,
+        `Serviço: ${data.get("servico") || ""}`,
+        `Mensagem: ${data.get("mensagem") || ""}`,
+      ].join("\n");
+
+      if (status) {
+        status.textContent = "Solicitação enviada por e-mail. Abrindo WhatsApp com sua mensagem...";
+      }
+
+      window.open(`${whatsappBaseUrl}${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</BaseLayout>

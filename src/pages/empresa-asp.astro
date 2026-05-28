@@ -1,0 +1,231 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { cityPages } from "../data/cityPages";
+import { whatsappUrl } from "../data/site";
+
+const title = "Cidades Atendidas pela Casa e Piscina";
+const description = "Veja as cidades atendidas pela Casa e Piscina para reforma, conserto, restauração e manutenção de piscina de fibra. Encontre atendimento na sua região.";
+const canonical = "https://casaepiscina.com.br/empresa-asp/";
+
+const cities = [
+  ...cityPages.map((page) => ({
+    name: page.city,
+    href: `/${page.slug}/`,
+    profile: page.profile,
+  })),
+  {
+    name: "Contagem",
+    href: "/reforma-de-piscina-de-fibra-em-contagem/",
+    profile: "urban",
+  },
+].sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
+
+const cityText = {
+  rural: "Atendimento para piscinas de fibra em casas, sítios, chácaras e áreas externas.",
+  urban: "Atendimento para residências, condomínios, clubes e áreas de lazer urbanas.",
+  premium: "Atendimento para revitalização, acabamento, modernização e valorização da área de lazer.",
+};
+
+const services = [
+  {
+    title: "Reforma de piscina de fibra",
+    text: "Recuperação completa da estrutura, pintura e acabamento para deixar a piscina segura e bonita novamente.",
+  },
+  {
+    title: "Conserto de piscina de fibra",
+    text: "Reparo de trincas, furos, vazamentos, bolhas e pontos frágeis com fibra de vidro e resina.",
+  },
+  {
+    title: "Restauração de piscina",
+    text: "Serviço indicado para piscinas antigas, manchadas, opacas ou com desgaste visível no acabamento.",
+  },
+  {
+    title: "Revitalização de piscina de fibra",
+    text: "Renovação estética com lixamento, pequenos reparos, pintura e acabamento para recuperar brilho e proteção.",
+  },
+  {
+    title: "Manutenção de piscinas",
+    text: "Manutenção preventiva e corretiva para preservar estrutura, água, bombas, filtros e acessórios.",
+  },
+  {
+    title: "Instalação de filtragem",
+    text: "Instalação, troca e revisão de filtros, bombas, registros, tubulações e componentes hidráulicos.",
+  },
+  {
+    title: "Equipamentos para piscina",
+    text: "Orientação, instalação e manutenção de bombas, filtros, ralos, refletores, registros e acessórios.",
+  },
+  {
+    title: "Aquecimento para piscinas",
+    text: "Soluções para aproveitar melhor a piscina durante o ano, com mais conforto e funcionalidade.",
+  },
+  {
+    title: "Iluminação LED",
+    text: "Modernização da piscina com iluminação para melhorar o visual, a segurança e o uso noturno.",
+  },
+  {
+    title: "Piscina com cascata",
+    text: "Instalação e orientação para cascatas que valorizam a área externa e deixam o ambiente mais agradável.",
+  },
+];
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: title,
+  itemListElement: cities.map((city, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: `Reforma de Piscina de Fibra em ${city.name}`,
+    url: new URL(city.href, "https://casaepiscina.com.br").toString(),
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image="/image/conserto-de-piscina-de-fibra.webp"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Cidades Atendidas", url: "/empresa-asp/" }]} />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.78), rgba(14, 36, 48, 0.62)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
+      aria-hidden="true"
+    />
+    <div class="relative container-site grid min-h-[560px] gap-10 py-20 md:grid-cols-[1fr_0.78fr] md:items-center md:py-24">
+      <div class="text-white">
+        <p class="eyebrow text-white/78">Atendimento regional</p>
+        <h1 class="mt-5 max-w-4xl text-4xl font-black leading-tight md:text-6xl">
+          Cidades Atendidas pela Casa e Piscina
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-white/88">
+          Encontre atendimento especializado para reforma, conserto, restauração e manutenção de piscina de fibra na sua cidade.
+        </p>
+        <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl("Olá, gostaria de solicitar orçamento para reforma de piscina de fibra na minha cidade.")} target="_blank" rel="nofollow noopener">
+          Solicitar orçamento pelo WhatsApp
+        </a>
+      </div>
+
+      <div class="rounded-lg bg-white p-6 shadow-xl shadow-brand-ink/20">
+        <p class="text-sm font-black uppercase tracking-[0.12em] text-brand-muted">Cobertura</p>
+        <p class="mt-4 text-5xl font-black leading-none text-brand-ink">{cities.length}</p>
+        <p class="mt-3 text-lg font-bold leading-7 text-brand-muted">cidades com páginas locais para atendimento em piscina de fibra.</p>
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          <div class="border-l-4 border-brand-ink bg-[#f4f7f8] p-4">
+            <p class="text-2xl font-black text-brand-ink">MG</p>
+            <p class="mt-1 text-sm font-bold text-brand-muted">Minas Gerais</p>
+          </div>
+          <div class="border-l-4 border-brand-ink bg-[#f4f7f8] p-4">
+            <p class="text-2xl font-black text-brand-ink">Fibra</p>
+            <p class="mt-1 text-sm font-bold text-brand-muted">Reforma e conserto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
+      <div>
+        <p class="eyebrow mb-4">Cidades e regiões próximas</p>
+        <h2 class="section-title">Atendimento especializado em piscina de fibra</h2>
+      </div>
+      <div class="space-y-5 text-lg leading-8 text-brand-muted">
+        <p>
+          A Casa e Piscina atende várias cidades de Minas Gerais com serviços de reforma de piscina de fibra, conserto de piscina, restauração, revitalização, manutenção, instalação de equipamentos, iluminação, cascata e aquecimento.
+        </p>
+        <p>
+          Cada página local reúne informações sobre o atendimento naquela cidade, os principais problemas que corrigimos e as soluções indicadas para deixar sua piscina mais bonita, segura e pronta para uso.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#f4f7f8]">
+    <div class="container-site">
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Lista de cidades</p>
+        <h2 class="section-title">Encontre atendimento na sua cidade</h2>
+        <p class="lead mt-5">
+          Escolha a cidade onde você precisa de atendimento para acessar informações locais sobre reforma, conserto, restauração, pintura e manutenção de piscina de fibra.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {cities.map((city) => (
+          <article class="card card-hover flex h-full flex-col p-6">
+            <h3 class="text-2xl font-black text-brand-ink">{city.name}</h3>
+            <p class="mt-4 flex-1 leading-7 text-brand-muted">
+              {cityText[city.profile]} Atendimento para reforma, conserto e manutenção de piscina de fibra em {city.name}.
+            </p>
+            <a class="btn btn-secondary mt-6 w-full" href={city.href}>
+              Reforma de Piscina de Fibra em {city.name}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Serviços</p>
+        <h2 class="section-title">Serviços disponíveis nas cidades atendidas</h2>
+        <p class="lead mt-5">
+          Nossas soluções atendem piscinas residenciais, condomínios, sítios, chácaras, clubes e áreas de lazer que precisam de reparo técnico e acabamento durável.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        {services.map((service) => (
+          <article class="rounded-lg border border-brand-line bg-white p-5">
+            <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-ink text-white" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M20 6 9 17l-5-5"></path>
+              </svg>
+            </span>
+            <h3 class="mt-5 text-xl font-black leading-tight text-brand-ink">{service.title}</h3>
+            <p class="mt-4 text-sm leading-6 text-brand-muted">{service.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#f4f7f8]">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+      <div>
+        <p class="eyebrow mb-4">Orientação</p>
+        <h2 class="section-title">Como escolher a página da sua cidade</h2>
+        <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+          <p>
+            Escolha acima a cidade onde você precisa de atendimento. Em cada página, você encontra informações sobre reforma de piscina de fibra, conserto, restauração, manutenção e soluções para deixar sua piscina mais bonita, segura e pronta para uso.
+          </p>
+          <p>
+            Se você mora em uma região próxima, também pode acessar a página da cidade mais perto ou chamar a equipe pelo WhatsApp para confirmar a disponibilidade de atendimento no seu endereço.
+          </p>
+        </div>
+      </div>
+      <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/piscinas-belo-horizonte.jpg" alt="Piscina de fibra reformada em cidade atendida pela Casa e Piscina" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container-site text-center">
+      <h2 class="text-3xl font-black leading-tight md:text-4xl">Não encontrou sua cidade?</h2>
+      <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-white/86">
+        Se a sua cidade não aparece na lista, entre em contato mesmo assim. A Casa e Piscina atende diversas regiões próximas e pode verificar a disponibilidade de atendimento para o seu endereço.
+      </p>
+      <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl("Olá, gostaria de verificar atendimento da Casa e Piscina na minha cidade.")} target="_blank" rel="nofollow noopener">
+        Falar com a Casa e Piscina no WhatsApp
+      </a>
+    </div>
+  </section>
+</BaseLayout>

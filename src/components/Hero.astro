@@ -1,0 +1,31 @@
+---
+import { whatsappUrl } from "../data/site";
+---
+
+<section class="relative isolate overflow-hidden bg-brand-ink">
+  <div
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+    style={`background-image: linear-gradient(rgba(14, 36, 48, 0.7), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh-M.webp')`}
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-0 hidden bg-cover bg-center bg-no-repeat md:block"
+    style={`background-image: linear-gradient(rgba(14, 36, 48, 0.7), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
+    aria-hidden="true"
+  />
+
+  <div class="relative container-site flex min-h-[650px] items-center py-20 md:min-h-[740px] md:py-28">
+    <div class="mx-auto w-full min-w-0 max-w-4xl text-center text-white">
+      <p class="eyebrow text-white/85">Casa e Piscina</p>
+      <h1 class="mt-5 text-4xl font-black leading-tight md:text-7xl">
+        Reforma de Piscina de Fibra
+      </h1>
+      <p class="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/90 md:text-xl">
+        Especialistas em Reforma, Pintura e Manutenção de Piscina de Fibra em Belo Horizonte e Região Metropolitana.
+      </p>
+      <a class="btn btn-lg btn-primary mt-10 w-full sm:w-auto" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+        Pedir Orçamento Pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

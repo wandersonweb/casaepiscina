@@ -1,0 +1,35 @@
+---
+import ArticleSchema from "../components/ArticleSchema.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  canonical={frontmatter.canonical}
+  image={frontmatter.image}
+>
+  <ArticleSchema
+    title={frontmatter.title}
+    description={frontmatter.description}
+    canonical={frontmatter.canonical}
+    image={frontmatter.image}
+    date={frontmatter.date?.toISOString?.() ?? frontmatter.date}
+  />
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: frontmatter.title, url: frontmatter.canonical }]} />
+  <article class="section section-surface">
+    <div class="container-site">
+      <img class="mb-8 aspect-[16/9] w-full rounded-lg object-cover shadow-lg shadow-brand-ink/10" src={frontmatter.image} alt={frontmatter.alt} loading="eager" />
+      <div class="mx-auto max-w-3xl">
+        <p class="eyebrow mb-3">{frontmatter.category}</p>
+        <h1 class="page-title">{frontmatter.title}</h1>
+      </div>
+    </div>
+    <div class="prose mt-8">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

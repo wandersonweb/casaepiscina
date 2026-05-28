@@ -1,0 +1,28 @@
+---
+import { siteConfig } from "../data/site";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  name: siteConfig.name,
+  url: `${siteConfig.url}/`,
+  image: new URL(siteConfig.defaultImage, siteConfig.url).toString(),
+  telephone: siteConfig.phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: siteConfig.city,
+    addressRegion: siteConfig.state,
+    addressCountry: "BR",
+  },
+  areaServed: "Belo Horizonte e região metropolitana",
+  serviceType: [
+    "Reforma de Piscina de Fibra",
+    "Manutenção de Piscina",
+    "Pintura de Piscina de Fibra",
+    "Reforma de Caixa d'água",
+  ],
+  sameAs: siteConfig.social,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

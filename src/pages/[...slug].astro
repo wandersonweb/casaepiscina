@@ -1,0 +1,141 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import CityHomeTemplate from "../components/CityHomeTemplate.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostLayout from "../layouts/PostLayout.astro";
+import { cityPages, cityPageSlugs } from "../data/cityPages";
+import { legacyPages } from "../data/legacyPages";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  const postSlugs = new Set(posts.map((post) => post.data.permalink));
+  const dedicatedPages = new Set([
+    "/blog/",
+    "/contato/",
+    "/empresa-asp/",
+    "/sobre-empresa/",
+    "/reforma-de-piscina-de-fibra-em-belo-horizonte/",
+    "/reforma-de-piscina-de-fibra-em-contagem/",
+    "/manutencao-de-piscina/",
+    "/reforma-de-caixa-da-agua/",
+    "/pintura-de-piscina-de-fibra/",
+  ]);
+  const normalizeUrl = (url) => {
+    const withLeadingSlash = url.startsWith("/") ? url : `/${url}`;
+    return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
+  };
+  const normalizeSlug = (url) => normalizeUrl(url).replace(/^\/|\/$/g, "");
+
+  return [
+    ...cityPages.map((cityPage) => ({
+      params: { slug: cityPage.slug },
+      props: { cityPage },
+    })),
+    ...posts
+      .filter((post) => !dedicatedPages.has(normalizeUrl(post.data.permalink)))
+      .filter((post) => !cityPageSlugs.has(post.data.permalink))
+      .map((post) => ({
+        params: { slug: post.data.permalink },
+        props: { post },
+      })),
+    ...legacyPages
+      .filter((page) => !dedicatedPages.has(normalizeUrl(page.url)))
+      .filter((page) => !cityPageSlugs.has(normalizeSlug(page.url)))
+      .filter((page) => !postSlugs.has(normalizeSlug(page.url)))
+      .map((page) => ({
+        params: { slug: normalizeSlug(page.url) },
+        props: { page },
+      })),
+  ];
+}
+
+const { cityPage, page, post } = Astro.props;
+const isCityPage = Boolean(cityPage);
+const isPost = Boolean(post);
+const renderedPost = isPost ? await render(post) : null;
+const Content = renderedPost?.Content;
+const isLegacyPage = !isCityPage && !isPost;
+const firstImage = isLegacyPage ? (page.images[0] ?? { src: page.image, alt: page.imageAlt }) : null;
+const hasH1 = isLegacyPage && page.headings.some((heading) => heading.level === 1);
+const paragraphs = isLegacyPage && page.paragraphs.length > 0
+  ? page.paragraphs
+  : [`A Casa e Piscina atende Belo Horizonte e região metropolitana com serviços de reforma, manutenção e pintura de piscina de fibra.`];
+---
+
+{isCityPage ? (
+  <CityHomeTemplate {...cityPage} />
+) : isPost && Content ? (
+  <PostLayout frontmatter={post.data}>
+    <Content />
+  </PostLayout>
+) : (
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} image={page.image}>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: page.title, url: page.url }]} />
+
+  <section class="section section-surface">
+    <div class="container-site grid gap-10 md:grid-cols-[1fr_0.85fr] md:items-center">
+      <div>
+        <p class="eyebrow mb-4">Casa e Piscina</p>
+        <h1 class="page-title">
+          {hasH1 ? page.headings.find((heading) => heading.level === 1)?.text : page.title}
+        </h1>
+        <p class="lead mt-5">{page.description}</p>
+      </div>
+      <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={firstImage.src} alt={firstImage.alt} loading="eager" />
+    </div>
+  </section>
+
+  <section class="section-tight section-alt">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <article class="card p-6 md:p-8">
+        <div class="space-y-7">
+          {page.headings.filter((heading) => heading.level !== 1).map((heading) => (
+            <>
+              {heading.level === 2 && <h2 class="section-title">{heading.text}</h2>}
+              {heading.level === 3 && <h3 class="text-2xl font-bold leading-tight text-brand-ink">{heading.text}</h3>}
+              {heading.level === 4 && <h4 class="text-xl font-bold leading-tight text-brand-ink">{heading.text}</h4>}
+            </>
+          ))}
+
+          {paragraphs.map((paragraph) => (
+            <p class="body-copy">{paragraph}</p>
+          ))}
+        </div>
+
+        {page.images.length > 1 && (
+          <div class="mt-10 grid gap-5 sm:grid-cols-2">
+            {page.images.slice(1, 4).map((image) => (
+              <img class="media-rounded aspect-[4/3] w-full" src={image.src} alt={image.alt} loading="lazy" />
+            ))}
+          </div>
+        )}
+      </article>
+
+      <aside class="space-y-5">
+        <div class="cta-panel">
+          <p class="text-xl font-bold">Solicite um orçamento</p>
+          <p class="mt-3 text-sm leading-6 text-white/80">Fale pelo WhatsApp e conte o que precisa para sua piscina ou serviço em fibra de vidro.</p>
+          <a class="btn btn-primary mt-5" href="https://api.whatsapp.com/send?phone=5531998325464&text=Ol%C3%A1%2C%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20sem%20compromisso!" target="_blank" rel="nofollow noopener">
+            Chamar no WhatsApp
+          </a>
+        </div>
+
+        <nav class="card p-6" aria-label="Links internos">
+          <p class="text-lg font-bold text-brand-ink">Serviços principais</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            <li><a href="/reforma-de-piscina-de-fibra-em-belo-horizonte/">Reforma de Piscina de Fibra</a></li>
+            <li><a href="/manutencao-de-piscina/">Manutenção de Piscina</a></li>
+            <li><a href="/pintura-de-piscina-de-fibra/">Pintura de Piscina de Fibra</a></li>
+            <li><a href="/reforma-de-caixa-da-agua/">Reforma de Caixa d'água</a></li>
+            <li><a href="/servicos-de-fibra-de-vidro/">Serviços de Fibra de Vidro</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <CTAWhatsapp />
+</BaseLayout>
+)}

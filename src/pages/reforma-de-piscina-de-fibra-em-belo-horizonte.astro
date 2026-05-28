@@ -1,0 +1,205 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+
+const serviceHighlights = [
+  {
+    title: "Reforma",
+    text: "Desfrute momentos de qualidade. Nossos reparos são impecáveis, garantindo momentos inesquecíveis de lazer e relaxamento.",
+  },
+  {
+    title: "Qualidade",
+    text: "Nossa missão é transformar piscinas com excelência, oferecendo serviços de reparo que superam suas expectativas.",
+  },
+  {
+    title: "Conserto",
+    text: "Confie em nossa expertise em conserto de piscina, onde a qualidade é nossa prioridade máxima.",
+  },
+];
+
+const modernizationTips = [
+  "Atualize a pintura: escolha uma nova cor ou um acabamento moderno para revitalizar o visual da sua piscina.",
+  "Adicione recursos modernos: cascatas, iluminação LED, aquecimento solar, cobertura automática e sistemas de som subaquáticos são ótimas opções.",
+  "Instale um deck de madeira: um deck ao redor da piscina cria um ambiente elegante e acolhedor.",
+  "Utilize revestimentos modernos: pastilhas coloridas ou azulejos com desenhos geométricos podem adicionar um toque contemporâneo.",
+];
+---
+
+<BaseLayout
+  title="Reforma de Piscina de Fibra em BH"
+  description="Reforma de piscina de fibra em BH com reparo de trincas, vazamentos, pintura, restauração e revitalização completa. Solicite orçamento pelo WhatsApp."
+  canonical="https://casaepiscina.com.br/reforma-de-piscina-de-fibra-em-belo-horizonte/"
+  image="/image/reforma-de-piscina-de-fibra-em-bh.webp"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Reforma de Piscina de Fibra em BH", url: "/reforma-de-piscina-de-fibra-em-belo-horizonte/" }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.74), rgba(14, 36, 48, 0.62)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
+      aria-hidden="true"
+    />
+    <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
+      <div class="mx-auto max-w-5xl text-white">
+        <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
+        <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">
+          Reforma de Piscina de Fibra em BH
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/88">
+          Restaure sua piscina, faça um orçamento sem compromisso agora mesmo!
+        </p>
+        <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Quero Fazer um orçamento!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
+      <article class="min-w-0">
+        <div class="max-w-4xl">
+          <p class="eyebrow mb-4">Serviço especializado</p>
+          <h2 class="text-3xl font-black leading-tight text-brand-ink md:text-5xl">
+            Sua Piscina está com Problemas? Deixe Conosco!
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Fazemos reforma e manutenção de piscina de fibra de vidro. Resolvemos furos, vazamentos, trincas e fazemos a pintura completa da sua piscina, entregando ela nova novamente. Estamos prontos para te atender.
+          </p>
+          <div class="mt-8 rounded-lg border border-brand-line bg-[#f4f7f8] p-6">
+            <p class="text-xl font-black text-brand-ink">Entre em contato agora mesmo!</p>
+            <a class="btn btn-primary mt-5" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+              Quero orçamento sem compromisso
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          {serviceHighlights.map((item) => (
+            <section class="card card-hover p-6">
+              <h3 class="text-2xl font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-4 leading-7 text-brand-muted">{item.text}</p>
+            </section>
+          ))}
+        </div>
+
+        <section class="mt-14 rounded-lg bg-brand-ink p-7 text-white md:p-9">
+          <h3 class="text-2xl font-black leading-tight md:text-3xl">Atendemos em Toda Região Metropolitana de Belo Horizonte</h3>
+          <p class="mt-5 text-lg leading-8 text-white/78">
+            Você que mora em Belo Horizonte ou qualquer cidade da nossa região metropolitana pode ficar tranquilo que atendemos você. Basta entrar em contato agora mesmo pelo WhatsApp, que faremos um orçamento sem compromisso. Nossa empresa está preparada para lhe atender.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+
+        <section id="conserto" class="mt-14 grid gap-10 scroll-mt-28 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <div>
+            <h2 class="section-title">Conserto de Piscina de Fibra</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>Se a sua piscina de fibra precisa de reparos, não se preocupe! Nossa equipe altamente qualificada está pronta para lidar com qualquer problema que sua piscina possa apresentar.</p>
+              <p>Utilizamos materiais de primeira qualidade e técnicas avançadas para garantir resultados duradouros. Reforçamos a fibra de vidro, realizamos o lixamento para remover bolhas, rachaduras e fissuras, e finalizamos com pintura e acabamento em Gel Coat.</p>
+              <p>Com o passar dos anos, é natural que a piscina sofra desgaste e apresente desbotamento e manchas. Nossos serviços de reforma, restauração e pintura em piscinas de fibra revitalizam sua piscina, transformando-a novamente em um espaço bonito e funcional.</p>
+            </div>
+          </div>
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/piscinas-belo-horizonte.jpg" alt="Piscina depois de completamente reformada em Belo Horizonte" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Aqui está a piscina depois de completamente reformada.</figcaption>
+          </figure>
+        </section>
+
+        <section id="restauracao" class="mt-14 scroll-mt-28">
+          <h2 class="section-title">Restauração de Piscina</h2>
+          <p class="mt-6 max-w-4xl text-lg leading-8 text-brand-muted">
+            Se você possui uma piscina de fibra em Belo Horizonte e está procurando renovar e revitalizar, você veio ao lugar certo. Nossa empresa oferece serviços especializados em reforma de piscinas de fibra, garantindo que você possa desfrutar de momentos refrescantes e relaxantes novamente.
+          </p>
+          <p class="mt-5 text-lg leading-8 text-brand-muted">
+            Entre em contato com nossa equipe para fazer um orçamento sem compromisso.
+          </p>
+        </section>
+
+        <section class="mt-14 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <figure class="md:order-1">
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-de-piscina-de-fibra-jpg.webp" alt="Preparação para reforma de piscina de fibra" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Aqui está no início da preparação para reforma da piscina.</figcaption>
+          </figure>
+          <div class="md:order-2">
+            <h2 class="section-title">Recuperando a Beleza e Funcionalidade</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>Muitas vezes, piscinas de fibra podem sofrer danos ao longo do tempo. Seja por rachaduras, vazamentos ou outros problemas, é possível consertar e recuperar sua piscina de fibra em Belo Horizonte.</p>
+              <p>Nossa equipe está pronta para diagnosticar e resolver qualquer problema, utilizando técnicas avançadas e materiais de alta qualidade para garantir resultados duradouros.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-14">
+          <h2 class="section-title">Reforma de Piscina</h2>
+          <div class="mt-6 grid gap-8 md:grid-cols-[1fr_0.9fr] md:items-start">
+            <div>
+              <h3 class="text-2xl font-black leading-tight text-brand-ink">Tem Conserto para Piscina de Fibra?</h3>
+              <div class="mt-5 space-y-5 text-lg leading-8 text-brand-muted">
+                <p>Sim! Piscinas de fibra podem ser consertadas, desde que os danos não sejam muito extensos.</p>
+                <p>Pequenas trincas e fissuras podem ser reparadas e, aplicando uma nova camada de fibra, os problemas podem ser resolvidos.</p>
+                <p>Nossa equipe avaliará a condição da piscina e oferecerá a melhor solução de conserto.</p>
+              </div>
+            </div>
+            <figure>
+              <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra-jpg.webp" alt="Reforma de piscina grande de fibra" loading="lazy" />
+              <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Reformando uma piscina grande, a área de um apartamento.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="modernizacao" class="mt-14 scroll-mt-28 rounded-lg border border-brand-line bg-white p-7 shadow-sm shadow-brand-ink/5 md:p-9">
+          <h2 class="section-title">Como modernizar e revitalizar uma piscina?</h2>
+          <ul class="mt-7 space-y-4 text-lg leading-8 text-brand-muted">
+            {modernizationTips.map((tip) => (
+              <li class="border-l-4 border-brand-ink pl-5">{tip}</li>
+            ))}
+          </ul>
+
+          <h3 class="mt-10 text-2xl font-black leading-tight text-brand-ink">Como Recuperar uma Piscina de Fibra?</h3>
+          <p class="mt-5 text-lg leading-8 text-brand-muted">
+            A recuperação de uma piscina de fibra envolve um processo especializado, que pode incluir reparo de rachaduras, substituição de revestimento ou outros reparos necessários.
+          </p>
+        </section>
+
+        <section id="orcamento" class="mt-14 scroll-mt-28 bg-[#f4f7f8] p-7 md:p-9">
+          <h3 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">
+            Estamos aqui para ajudar, solicite agora mesmo um orçamento sem compromisso!
+          </h3>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Se você está procurando por serviços de reforma, reparo ou conserto de piscinas de fibra em Belo Horizonte, conte conosco! Nossa equipe comprometida e experiente está pronta para transformar sua piscina, garantindo que você desfrute de um oásis aquático impecável. Entre em contato conosco hoje mesmo para obter um orçamento personalizado e começar a jornada para uma piscina renovada e revitalizada.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Chamar no WhatsApp
+          </a>
+        </section>
+      </article>
+
+      <aside class="lg:sticky lg:top-28">
+        <div class="rounded-lg bg-brand-ink p-6 text-white shadow-xl shadow-brand-ink/10">
+          <p class="text-xl font-black">Orçamento pelo WhatsApp</p>
+          <p class="mt-3 text-sm leading-6 text-white/75">Conte o problema da sua piscina e receba orientação para reforma, pintura, trinca ou vazamento.</p>
+          <a class="btn btn-primary mt-5 w-full" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero orçamento
+          </a>
+        </div>
+
+        <nav class="card mt-5 p-6" aria-label="Conteúdo da página">
+          <p class="text-lg font-black text-brand-ink">Nesta página</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            <li><a href="#conserto">Conserto de Piscina de Fibra</a></li>
+            <li><a href="#restauracao">Restauração de Piscina</a></li>
+            <li><a href="#modernizacao">Modernização e revitalização</a></li>
+            <li><a href="#orcamento">Orçamento sem compromisso</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <CTAWhatsapp />
+</BaseLayout>

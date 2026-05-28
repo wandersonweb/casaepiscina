@@ -1,0 +1,62 @@
+---
+import PostCard from "./PostCard.astro";
+
+const posts = [
+  {
+    href: "/reforma-de-piscina-de-fibra-em-belo-horizonte/",
+    title: "Reforma de Piscina de Fibra",
+    description: "Reparo, revitalização e pintura para piscinas de fibra em Belo Horizonte.",
+    image: "/image/conserto-de-piscina-de-fibra.webp",
+    alt: "conserto de piscina de fibra",
+  },
+  {
+    href: "/manutencao-de-piscina/",
+    title: "Manutenção de Piscina de Fibra",
+    description: "Cuidados preventivos e manutenção para preservar sua piscina.",
+    image: "/image/reformando-piscina-em-bh.webp",
+    alt: "reformando piscina em BH",
+  },
+  {
+    href: "/reforma-de-caixa-da-agua/",
+    title: "Reforma de Caixa d'água em BH",
+    description: "Reparos em caixas d'água de fibra e polietileno.",
+    image: "/image/reforma-piscina-de-fibra.webp",
+    alt: "reforma piscina de fibra",
+  },
+  {
+    href: "/pintura-de-piscina-de-fibra/",
+    title: "Pintura de Piscina de Fibra",
+    description: "Aplicação de gel coat e pintura técnica para piscinas de fibra.",
+    image: "/image/pintar-piscina-de-fibra.webp",
+    alt: "pintar piscina de fibra",
+  },
+  {
+    href: "/reforma-de-piscina-de-fibra-em-lagoa-santa/",
+    title: "Reforma de Piscina de Fibra em Lagoa Santa",
+    description: "Atendimento local para reforma e recuperação de piscinas de fibra.",
+    image: "/image/reforma-piscina-de-fibra.webp",
+    alt: "restauração de piscina de fibra em Lagoa Santa",
+  },
+  {
+    href: "/reforma-de-piscina-de-fibra-em-contagem/",
+    title: "Reforma de Piscina de Fibra em Contagem",
+    description: "Reforma, pintura e reparos em piscinas de fibra em Contagem.",
+    image: "/image/conserto-de-piscina-de-fibra.webp",
+    alt: "conserto de piscina de fibra em Contagem",
+  },
+];
+---
+
+<section class="section section-alt">
+  <div class="container-site">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="eyebrow mb-3">Serviços</p>
+      <h2 class="section-title">Conserto de Piscinas de Fibra</h2>
+      <p class="lead mt-5">Realizamos conserto, reforma, pintura e manutenção de piscinas de fibra, além de serviços em caixas d'água e reparos de fibra de vidro em geral.</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => <PostCard {...post} />)}
+    </div>
+  </div>
+</section>

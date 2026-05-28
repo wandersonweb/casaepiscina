@@ -1,0 +1,65 @@
+---
+const stats = [
+  { value: "500+", label: "serviços realizados" },
+  { value: "10+", label: "anos no mercado" },
+  { value: "100%", label: "clientes satisfeitos" },
+  { value: "80+", label: "bairros atendidos em BH" },
+];
+
+const testimonials = [
+  {
+    quote: "Minha piscina estava com trincas e vazamento. A equipe resolveu tudo com muito capricho e entregou a piscina parecendo nova.",
+    name: "Ricardo Santos",
+    location: "piscina reformada em BH",
+  },
+  {
+    quote: "Fizeram a pintura e revitalização completa da piscina de fibra. O atendimento foi pontual, limpo e o resultado ficou excelente.",
+    name: "Mariana Oliveira",
+    location: "cliente residencial",
+  },
+  {
+    quote: "Contratamos a Casa e Piscina para reparos em fibra de vidro e reforma da caixa d'água. Serviço sério, rápido e muito bem executado.",
+    name: "Construtora Horizonte",
+    location: "parceiro comercial",
+    wide: true,
+  },
+];
+---
+
+<section class="section relative overflow-hidden bg-brand-sand">
+  <div class="pointer-events-none absolute right-4 top-0 hidden text-[220px] font-black leading-none text-white/55 md:block" aria-hidden="true">"</div>
+
+  <div class="container-site relative grid gap-12 lg:grid-cols-[0.95fr_1.8fr] lg:items-start">
+    <div>
+      <p class="eyebrow text-brand-gold">Avaliações</p>
+      <h2 class="mt-6 max-w-md text-4xl font-black leading-tight text-brand-ink md:text-5xl">Confiança construída reforma a reforma</h2>
+
+      <div class="mt-10 grid grid-cols-2 gap-x-10 gap-y-8">
+        {stats.map((stat) => (
+          <div>
+            <p class="text-4xl font-black leading-none text-brand-ink">{stat.value}</p>
+            <p class="mt-3 text-sm font-black uppercase text-brand-muted tracking-[0.08em]">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="card mt-10 p-7 text-brand-ink">
+        <p class="text-lg font-bold italic leading-8 text-brand-muted">"Referência em reforma, pintura e reparos de piscina de fibra em Belo Horizonte."</p>
+        <p class="mt-5 text-sm font-black uppercase tracking-[0.08em] text-brand-ink"><span class="text-brand-gold">★★★★★</span> Google Reviews</p>
+      </div>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {testimonials.map((testimonial) => (
+        <article class={`card card-hover p-8 ${testimonial.wide ? "md:col-span-2" : ""}`}>
+          <p class="text-lg font-black leading-none text-brand-gold">★★★★★</p>
+          <p class="mt-7 text-xl font-bold italic leading-9 text-brand-ink">"{testimonial.quote}"</p>
+          <div class="mt-8">
+            <p class="text-xl font-black text-brand-ink">{testimonial.name}</p>
+            <p class="mt-1 text-sm font-black uppercase tracking-[0.08em] text-brand-muted">{testimonial.location}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

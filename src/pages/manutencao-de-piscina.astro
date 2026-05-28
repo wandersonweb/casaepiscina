@@ -1,0 +1,242 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+
+const serviceHighlights = [
+  {
+    title: "Piscina",
+    text: "Desfrute momentos de qualidade com sua família e deixe todo processo de restauração de piscina com a nossa equipe.",
+  },
+  {
+    title: "Qualidade",
+    text: "Nossa missão é transformar piscinas com excelência, oferecendo serviços de reparo que superam suas expectativas em durabilidade.",
+  },
+  {
+    title: "Reparo",
+    text: "Confie em nossa expertise em conserto de piscinas, onde a qualidade é nossa prioridade máxima, proporcionando satisfação aos clientes.",
+  },
+];
+
+const maintenanceSteps = [
+  {
+    title: "Análise Frequente da Água",
+    text: "Teste a água regularmente para verificar os níveis de pH, alcalinidade e cloro. Ajuste-os conforme necessário para manter a água em condições ideais.",
+  },
+  {
+    title: "Limpeza Semanal com Cloro",
+    text: "Utilize cloro para desinfetar a água e evitar a proliferação de algas e bactérias. Siga as instruções do fabricante para dosagem correta.",
+  },
+  {
+    title: "Limpeza das Bordas da Piscina",
+    text: "As bordas da piscina devem ser limpas para remover resíduos de óleo e sujeira, o que ajuda a prevenir a formação de linha d'água.",
+  },
+  {
+    title: "Tratamento com Clarificante",
+    text: "Use clarificante para manter a água cristalina, agregando partículas finas para que possam ser filtradas mais facilmente.",
+  },
+  {
+    title: "Aspiração e Drenagem da Sujeira",
+    text: "Aspire o fundo da piscina regularmente para remover detritos e sujeira acumulada, e drene a água conforme necessário para manter a piscina limpa.",
+  },
+];
+---
+
+<BaseLayout
+  title="Manutenção de Piscina de Fibra"
+  description="Especialistas em manutenção de piscina de fibra. A forma correta e adequada de revitalizar sua piscina para garantir durabilidade e segurança."
+  canonical="https://casaepiscina.com.br/manutencao-de-piscina/"
+  image="/image/empresa-de-manutencao-de-piscina.webp"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Manutenção de Piscina de Fibra", url: "/manutencao-de-piscina/" }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.74), rgba(14, 36, 48, 0.62)), url('/image/empresa-de-manutencao-de-piscina.webp')`}
+      aria-hidden="true"
+    />
+    <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
+      <div class="mx-auto max-w-5xl text-white">
+        <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
+        <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">
+          Manutenção de Piscina de Fibra
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/88">
+          A solução ideal para os proprietários de piscinas de fibra em BH.
+        </p>
+        <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Quero Fazer um orçamento!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
+      <article class="min-w-0">
+        <div class="max-w-4xl">
+          <p class="eyebrow mb-4">Serviço especializado</p>
+          <h2 class="text-3xl font-black leading-tight text-brand-ink md:text-5xl">
+            Manutenção de Piscina
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">
+            Aqui vamos mostrar que a manutenção correta e adequada de uma piscina é essencial para garantir sua durabilidade e segurança para sua família. Reunimos dicas e informações valiosas sobre como manter sua piscina de fibra em ótimas condições, preservando a qualidade da água e evitando desgastes que podem causar trincas e rachaduras.
+          </p>
+          <figure class="mt-8">
+            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src="/image/manutencao-de-piscina.jpg" alt="Manutenção de piscina de fibra em Belo Horizonte" loading="eager" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Manutenção de piscina de fibra com cuidado preventivo para preservar a estrutura e a qualidade da água.</figcaption>
+          </figure>
+          <div class="mt-8 rounded-lg border border-brand-line bg-[#f4f7f8] p-6">
+            <p class="text-xl font-black text-brand-ink">Para entrar em contato agora mesmo com nossa equipe, basta nos chamar no WhatsApp.</p>
+            <a class="btn btn-primary mt-5" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+              Quero Fazer um orçamento!
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          {serviceHighlights.map((item) => (
+            <section class="card card-hover p-6">
+              <h3 class="text-2xl font-black text-brand-ink">{item.title}</h3>
+              <p class="mt-4 leading-7 text-brand-muted">{item.text}</p>
+            </section>
+          ))}
+        </div>
+
+        <section class="mt-14 rounded-lg bg-brand-ink p-7 text-white md:p-9">
+          <h2 class="text-2xl font-black leading-tight md:text-3xl">Empresa especializada em reforma e manutenção de piscina de fibra em BH e região metropolitana</h2>
+          <p class="mt-5 text-lg leading-8 text-white/78">
+            A sua piscina de fibra precisa de manutenção preventiva sempre. Nossa equipe avalia pintura, fibra, estrutura, bordas, vazamentos e sinais de desgaste para orientar o serviço correto antes que pequenos problemas virem reparos maiores.
+          </p>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+
+        <section id="empresas" class="mt-14 grid gap-10 scroll-mt-28 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <div>
+            <h2 class="section-title">Empresas de Manutenção de Piscina em BH</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>Empresas de manutenção de piscinas desempenham um papel crucial na preservação e renovação de piscinas, especialmente quando há problemas como trincas, rachaduras e necessidade de renovação da pintura. Neste caso, nossa empresa se destaca como a escolha essencial para quem busca cuidados especializados.</p>
+              <p>Com uma equipe experiente e dedicada, estamos comprometidos em oferecer serviços de alta qualidade, desde a detecção e reparo de trincas e rachaduras até a renovação da pintura, garantindo que sua piscina recupere sua beleza e funcionalidade.</p>
+              <p>Além disso, priorizamos a satisfação do cliente, buscando sempre superar expectativas e proporcionar um ambiente seguro e agradável para desfrutar. Com a nossa empresa, sua piscina estará em boas mãos, recebendo os cuidados necessários para mantê-la em ótimas condições por muitos anos.</p>
+            </div>
+          </div>
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra.webp" alt="Manutenção de piscina de fibra iniciada em Belo Horizonte" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Piscina com manutenção iniciada e adiantando para fazer a instalação.</figcaption>
+          </figure>
+        </section>
+
+        <section id="dicas" class="mt-14 scroll-mt-28">
+          <h2 class="section-title">Manutenção de Piscina - Dicas Essencial Para Manter sua Piscina Saudável</h2>
+          <p class="mt-6 max-w-4xl text-lg leading-8 text-brand-muted">
+            Esses cuidados devem ser recorrentes, com uma pessoa especializada para observar com cuidado todos os aspectos físicos da piscina e manter tudo sempre em boas condições. É importante acompanhar estrutura, fibra, pintura, água, filtro e sinais de desgaste.
+          </p>
+        </section>
+
+        <section id="filtro" class="mt-14 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <figure class="md:order-1">
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/conserto-de-piscina-de-fibra.webp" alt="Manutenção completa de piscina de fibra" loading="lazy" />
+            <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Manutenção de piscina completa, agora já terminamos de fazer a reforma.</figcaption>
+          </figure>
+          <div class="md:order-2">
+            <h2 class="section-title">Manutenção do Filtro da Piscina</h2>
+            <p class="mt-6 text-lg leading-8 text-brand-muted">
+              O filtro da piscina é um componente crítico que mantém a água limpa e clara. Deve-se verificar e limpar o filtro regularmente, de acordo com as instruções do fabricante. Uma manutenção inadequada do filtro pode levar a uma qualidade de água pobre e aumentar o risco de problemas de saúde.
+            </p>
+          </div>
+        </section>
+
+        <section id="custo" class="mt-14 scroll-mt-28">
+          <h2 class="section-title">Quanto Custa a Manutenção de uma Piscina de Fibra?</h2>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+            <p>O custo da manutenção de uma piscina de fibra pode variar significativamente, dependendo de vários fatores, como o tamanho da piscina, a frequência de uso e a localização. Em média, os proprietários podem esperar gastar cerca de R$ 250,00 por mês em produtos químicos e suprimentos.</p>
+            <p>Embora o proprietário possa realizar serviços básicos de manutenção, como a aplicação de produtos químicos, a renovação da pintura, reestruturação da fibra em caso de vazamentos e outros serviços mais complexos exigem uma empresa especializada.</p>
+            <p>Determinar o valor exato da manutenção pode ser desafiador, pois cada piscina se desgasta de maneira única. Fatores como o tamanho da piscina e a quantidade de danos existentes podem influenciar no custo.</p>
+            <p>Por isso, é recomendável agendar uma visita técnica para obter uma avaliação precisa e um orçamento personalizado. Com a ajuda de profissionais qualificados, você garante que sua piscina receba os cuidados necessários para mantê-la em excelente estado, prolongando sua vida útil e a segurança dos usuários.</p>
+          </div>
+
+          <div class="mt-10 grid gap-8 md:grid-cols-2">
+            <section class="card p-6">
+              <h3 class="text-2xl font-black leading-tight text-brand-ink">Como Cuidar da Fibra da Piscina?</h3>
+              <p class="mt-5 leading-7 text-brand-muted">
+                Para cuidar da fibra da piscina e evitar o desbotamento ou danos, é importante manter o equilíbrio químico da água, limpar regularmente as bordas e o entorno da piscina, e realizar a manutenção contínua da bomba d'água.
+              </p>
+            </section>
+
+            <section class="card p-6">
+              <h3 class="text-2xl font-black leading-tight text-brand-ink">Qual o Tempo de Vida Útil de uma Piscina de Fibra?</h3>
+              <p class="mt-5 leading-7 text-brand-muted">
+                A vida útil de uma piscina de fibra pode chegar a 20 ou 30 anos sem retoques significativos, desde que seja bem cuidada e mantida. Esse tempo varia conforme instalação, transporte, exposição ao sol, tempo sem água e rotina de manutenção.
+              </p>
+            </section>
+          </div>
+
+          <div class="mt-8 space-y-5 text-lg leading-8 text-brand-muted">
+            <p>Uma piscina mal instalada pode trincar com facilidade, enquanto um transporte inadequado pode fragilizar a fibra, resultando em microfissuras que podem se abrir quando a piscina recebe a carga de água.</p>
+            <p>É fundamental realizar a instalação com profissionais qualificados, seguir as orientações do fabricante e manter a manutenção em dia para prolongar a vida útil da piscina e evitar problemas futuros.</p>
+          </div>
+        </section>
+
+        <section id="passos" class="mt-14 scroll-mt-28 rounded-lg border border-brand-line bg-white p-7 shadow-sm shadow-brand-ink/5 md:p-9">
+          <h2 class="section-title">Passos para a Manutenção Correta da Piscina</h2>
+          <div class="mt-7 grid gap-5">
+            {maintenanceSteps.map((step) => (
+              <section class="border-l-4 border-brand-ink pl-5">
+                <h3 class="text-xl font-black text-brand-ink">{step.title}</h3>
+                <p class="mt-2 leading-7 text-brand-muted">{step.text}</p>
+              </section>
+            ))}
+          </div>
+          <p class="mt-8 text-lg leading-8 text-brand-muted">
+            Você também pode acompanhar mais sobre <a class="font-black text-brand-ink underline underline-offset-4" href="/reforma-de-caixa-da-agua/">Reforma de Caixa d'água</a>.
+          </p>
+        </section>
+
+        <section id="orcamento" class="mt-14 scroll-mt-28 bg-[#f4f7f8] p-7 md:p-9">
+          <h3 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">
+            Manutenção e Reforma de piscina de fibra de vidro em Belo Horizonte e região
+          </h3>
+          <h4 class="mt-4 text-xl font-black leading-tight text-brand-ink">
+            Somos especializados em reformas de piscina de fibra de vidro.
+          </h4>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+            <p>Para entrar em contato agora mesmo com nossa equipe, basta nos chamar no WhatsApp agora mesmo.</p>
+            <p>A manutenção regular é essencial para garantir a durabilidade e a segurança da sua piscina de fibra. Seguindo as dicas apresentadas neste artigo, você poderá desfrutar de muitos anos de diversão e relaxamento na sua piscina. A manutenção preventiva é sempre mais econômica e menos trabalhosa do que reparos emergenciais.</p>
+            <p>Nossa empresa, especializada em manutenção de piscinas de fibra em BH, está aqui para ajudar a garantir que sua piscina receba os cuidados necessários. Com uma equipe experiente e dedicada, oferecemos serviços de alta qualidade, desde a detecção e reparo de trincas e rachaduras até a renovação da pintura, reestruturação da fibra e muito mais.</p>
+          </div>
+          <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero Fazer um orçamento!
+          </a>
+        </section>
+      </article>
+
+      <aside class="lg:sticky lg:top-28">
+        <div class="rounded-lg bg-brand-ink p-6 text-white shadow-xl shadow-brand-ink/10">
+          <p class="text-xl font-black">Orçamento pelo WhatsApp</p>
+          <p class="mt-3 text-sm leading-6 text-white/75">Conte como está sua piscina e receba orientação para manutenção, reforma, pintura, trinca ou vazamento.</p>
+          <a class="btn btn-primary mt-5 w-full" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+            Quero orçamento
+          </a>
+        </div>
+
+        <nav class="card mt-5 p-6" aria-label="Conteúdo da página">
+          <p class="text-lg font-black text-brand-ink">Nesta página</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            <li><a href="#empresas">Empresas de Manutenção em BH</a></li>
+            <li><a href="#dicas">Dicas de manutenção</a></li>
+            <li><a href="#filtro">Filtro da piscina</a></li>
+            <li><a href="#custo">Custo e vida útil</a></li>
+            <li><a href="#passos">Passos corretos</a></li>
+            <li><a href="#orcamento">Orçamento sem compromisso</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <CTAWhatsapp />
+</BaseLayout>

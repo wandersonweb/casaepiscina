@@ -1,0 +1,24 @@
+---
+import { siteConfig } from "../data/site";
+
+interface Crumb {
+  name: string;
+  url: string;
+}
+
+const { items = [] } = Astro.props as { items: Crumb[] };
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@id": item.url.startsWith("http") ? item.url : new URL(item.url, siteConfig.url).toString(),
+      name: item.name,
+    },
+  })),
+};
+---
+
+{items.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}

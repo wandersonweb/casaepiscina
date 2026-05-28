@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "../../components/PostCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog - Casa e Piscina"
+  description="Artigos e serviços da Casa e Piscina sobre reforma, manutenção e pintura de piscina de fibra em Belo Horizonte e região metropolitana."
+  canonical="https://casaepiscina.com.br/blog/"
+  image="/image/conserto-de-piscina-de-fibra.webp"
+>
+  <section class="section section-surface">
+    <div class="container-site">
+      <p class="eyebrow mb-4">Casa e Piscina</p>
+      <h1 class="page-title">Blog</h1>
+      <p class="lead mt-5 max-w-3xl">
+        Conteúdos sobre reforma, manutenção, pintura de piscina de fibra, reforma de caixa d'água e atendimento em Belo Horizonte e região metropolitana.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight section-alt">
+    <div class="container-site">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <PostCard
+            href={`/${post.data.permalink}/`}
+            title={post.data.title}
+            description={post.data.description}
+            image={post.data.image}
+            alt={post.data.alt}
+            label="Ler artigo"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

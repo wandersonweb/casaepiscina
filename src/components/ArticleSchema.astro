@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "../data/site";
+
+const { title, description, canonical, image, date } = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  image: new URL(image ?? siteConfig.defaultImage, siteConfig.url).toString(),
+  datePublished: date,
+  dateModified: date,
+  author: {
+    "@type": "Organization",
+    name: siteConfig.name,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+  },
+  mainEntityOfPage: canonical,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

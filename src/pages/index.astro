@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutSection from "../components/AboutSection.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import HomeFeatures from "../components/HomeFeatures.astro";
+import Hero from "../components/Hero.astro";
+import LatestPosts from "../components/LatestPosts.astro";
+import SocialProof from "../components/SocialProof.astro";
+import { whatsappUrl } from "../data/site";
+---
+
+<BaseLayout
+  title="Reforma de Piscina de Fibra"
+  description="Fazemos Reforma E Manutenção De Piscina De Fibra De Vidro! Resolvemos Furos, Vazamentos, Trincas E Fazemos A Pintura Completa Da Sua Piscina, Te Entregado Ela Nova Novamente."
+  canonical="https://casaepiscina.com.br/"
+  image="/image/conserto-de-piscina-de-fibra.webp"
+>
+  <Hero />
+  <HomeFeatures />
+
+  <CTAWhatsapp />
+
+  <LatestPosts />
+
+  <section class="cta-band">
+    <div class="container-site text-center">
+      <h3 class="text-3xl font-black">Entre em contato agora mesmo</h3>
+      <p class="mx-auto mt-4 max-w-2xl text-white/86">Atendemos Belo Horizonte e toda região metropolita, entre em contato agora mesmo.</p>
+      <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">Pedir orçamento pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <AboutSection />
+  <SocialProof />
+</BaseLayout>

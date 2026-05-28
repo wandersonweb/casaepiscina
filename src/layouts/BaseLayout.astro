@@ -1,0 +1,67 @@
+---
+import "../styles/global.css";
+import FloatingWhatsapp from "../components/FloatingWhatsapp.astro";
+import Footer from "../components/Footer.astro";
+import LocalBusinessSchema from "../components/LocalBusinessSchema.astro";
+import Navbar from "../components/Navbar.astro";
+import SEO from "../components/SEO.astro";
+import { siteConfig } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Casa e Piscina - Reforma de Piscina de Fibra em Belo Horizonte",
+  description = "Especialistas em reforma, pintura e manutenção de piscina de fibra em Belo Horizonte e região metropolitana.",
+  canonical = `${siteConfig.url}${Astro.url.pathname}`,
+  image = siteConfig.defaultImage,
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTPT96JJRX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-PTPT96JJRX");
+    </script>
+
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="mndvh5CQ-aRxyifvwZEhIsGmIIgB5bQYDISJMkr_Dz0" />
+
+    <!-- Meta Pixel: cole o codigo do Facebook Pixel aqui quando precisar ativar. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/logo/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/logo/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon-180x180.png" />
+    <link rel="mask-icon" href="/assets/logo/logo-grande.svg" color="#0e2430" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <SEO title={title} description={description} canonical={canonical} image={image} noindex={noindex} />
+    <LocalBusinessSchema />
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <FloatingWhatsapp />
+  </body>
+</html>

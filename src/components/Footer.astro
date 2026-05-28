@@ -1,0 +1,38 @@
+---
+import { siteConfig, whatsappUrl } from "../data/site";
+---
+
+<footer class="bg-brand-ink pb-8 pt-14 text-white/78">
+  <div class="container-site grid gap-10 md:grid-cols-3">
+    <div>
+      <p class="text-xl font-bold text-white">{siteConfig.name}</p>
+      <p class="mt-4 leading-7 text-white/65">Empresa local especializada em reforma, pintura e manutenção de piscinas de fibra em Belo Horizonte e região metropolitana.</p>
+    </div>
+    <div>
+      <p class="text-xl font-bold text-white">Serviços</p>
+      <ul class="link-list mt-4 space-y-3 text-white/65">
+        <li><a href="/reforma-de-piscina-de-fibra-em-belo-horizonte/">Reforma de Piscina de Fibra</a></li>
+        <li><a href="/manutencao-de-piscina/">Manutenção de Piscina</a></li>
+        <li><a href="/pintura-de-piscina-de-fibra/">Pintura de Piscina de Fibra</a></li>
+        <li><a href="/reforma-de-caixa-da-agua/">Reforma de Caixa d'água</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-xl font-bold text-white">Contato</p>
+      <ul class="link-list mt-4 space-y-3 text-white/65">
+        <li><a href={whatsappUrl()} target="_blank" rel="nofollow noopener">WhatsApp: {siteConfig.phone}</a></li>
+        <li>{siteConfig.email || "E-mail a definir"}</li>
+        <li>{siteConfig.city} - {siteConfig.state}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-site mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/55 md:flex-row md:items-center md:justify-between">
+    <p>Copyright 2026 | Casa e Piscina</p>
+    <div class="link-list flex flex-wrap gap-4">
+      <a href="/politica-de-privacidade/">Política de Privacidade</a>
+      <a href="/termo-de-uso/">Termo de uso</a>
+      <a href="/contato/">Contato</a>
+      <a href="/sobre-empresa/">Sobre empresa</a>
+    </div>
+  </div>
+</footer>

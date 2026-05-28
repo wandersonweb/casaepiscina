@@ -1,0 +1,35 @@
+---
+import { siteConfig, whatsappUrl } from "../data/site";
+
+const links = [
+  { href: "/", label: "Início" },
+  { href: "/sobre-empresa/", label: "Sobre" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/empresa-asp/", label: "Cidades Atendidas" },
+  { href: "/contato/", label: "Contato" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-brand-line bg-brand-cream/95 backdrop-blur">
+  <nav class="container-site flex min-h-20 items-center justify-between gap-4" aria-label="Menu principal">
+    <a href="/" class="flex items-center gap-3" aria-label="Casa e Piscina">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/assets/logo/logo-small.png 1x, /assets/logo/logo-small@2x.png 2x" />
+        <img src="/assets/logo/logo-header.png" srcset="/assets/logo/logo-header@2x.png 2x" alt="Casa e Piscina" class="h-12 w-auto" />
+      </picture>
+      <span class="sr-only">{siteConfig.name}</span>
+    </a>
+    <input id="menu-toggle" type="checkbox" class="peer sr-only" />
+    <label for="menu-toggle" class="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-md border border-brand-line text-brand-ink md:hidden" aria-label="Abrir menu">
+      <span class="block h-0.5 w-6 bg-current before:block before:h-0.5 before:w-6 before:-translate-y-2 before:bg-current after:block after:h-0.5 after:w-6 after:translate-y-1.5 after:bg-current"></span>
+    </label>
+    <div class="absolute left-0 right-0 top-20 hidden border-b border-brand-line bg-brand-cream p-4 shadow-lg peer-checked:block md:static md:block md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:gap-7">
+        {links.map((link) => <a class="text-sm font-semibold text-brand-muted transition-colors hover:text-brand-ink" href={link.href}>{link.label}</a>)}
+        <a class="btn btn-primary" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          {siteConfig.phone}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

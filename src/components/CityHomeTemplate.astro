@@ -1,0 +1,466 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutSection from "./AboutSection.astro";
+import BreadcrumbSchema from "./BreadcrumbSchema.astro";
+import HomeFeatures from "./HomeFeatures.astro";
+import SocialProof from "./SocialProof.astro";
+import { whatsappUrl } from "../data/site";
+import type { CityFaq } from "../data/cityPages";
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  city: string;
+  image?: string;
+  heroText?: string;
+  introParagraph?: string;
+  repairIntro?: string;
+  restorationIntro?: string;
+  localText?: string;
+  finalCta?: string;
+  cardOffset?: number;
+  faqs?: CityFaq[];
+  nearbyLinks?: Array<{ city: string; href: string }>;
+}
+
+const {
+  title,
+  description,
+  slug,
+  city,
+  image = "/image/conserto-de-piscina-de-fibra.webp",
+  heroText = "Conserto, restauração, pintura, revitalização, manutenção e instalação de equipamentos para piscinas de fibra.",
+  introParagraph = `Se a sua piscina está com trincas, vazamentos, pintura desgastada, manchas, bolhas ou sinais de envelhecimento, contar com uma empresa especializada em reforma de piscina de fibra em ${city} é a melhor forma de recuperar a beleza, a segurança e a durabilidade da sua área de lazer.`,
+  repairIntro = `O conserto de piscina em ${city} é indicado para piscinas que apresentam rachaduras, furos, vazamentos, descolamento da fibra, desgaste no acabamento, infiltrações ou falhas estruturais.`,
+  restorationIntro = `A restauração de piscina em ${city} é uma solução completa para piscinas antigas, danificadas ou com aparência desgastada. O serviço recupera tanto a estética quanto a funcionalidade da piscina.`,
+  localText = `Atendemos em ${city} e bairros próximos, oferecendo avaliação para piscinas de fibra com trincas, vazamentos, pintura desgastada, manchas ou necessidade de revitalização.`,
+  finalCta = `Solicite agora seu orçamento para reforma de piscina de fibra em ${city}.`,
+  cardOffset = 0,
+  faqs = [],
+  nearbyLinks = [],
+} = Astro.props;
+
+const canonical = new URL(`/${slug}/`, Astro.url.origin).toString();
+const cityService = `reforma de piscina de fibra em ${city}`;
+
+const warningSigns = [
+  "Trincas aparentes na estrutura",
+  "Vazamento ou perda constante de água",
+  "Manchas no fundo ou nas laterais",
+  "Pintura desbotada ou descascando",
+  "Bolhas na superfície da fibra",
+  "Sensação áspera ao toque",
+  "Pontos frágeis ou deformados",
+  "Mau funcionamento da filtragem",
+];
+
+const repairServices = [
+  "Reparo de trincas",
+  "Correção de furos",
+  "Reforço estrutural",
+  "Tratamento de vazamentos",
+  "Recuperação de bordas",
+  "Correção de bolhas na fibra",
+  "Lixamento e nivelamento",
+  "Pintura e acabamento",
+];
+
+const technicalServices = [
+  "Avaliação de vazamentos",
+  "Verificação da filtragem",
+  "Revisão de bombas",
+  "Troca de peças e acessórios",
+  "Orientação sobre produtos químicos",
+  "Limpeza técnica",
+  "Ajustes em sistemas hidráulicos",
+  "Manutenção preventiva e corretiva",
+];
+
+const poolEquipment = [
+  "Bombas para piscina",
+  "Filtros",
+  "Registros",
+  "Dispositivos de retorno",
+  "Ralos",
+  "Refletores",
+  "Cascatas",
+  "Sistemas de iluminação",
+  "Aquecedores",
+  "Acessórios de limpeza",
+];
+
+const maintenanceBenefits = [
+  "Evita vazamentos e danos estruturais",
+  "Mantém a água limpa e saudável",
+  "Aumenta a vida útil da piscina",
+  "Reduz gastos com reformas maiores",
+  "Preserva bombas e filtros",
+  "Melhora a segurança dos usuários",
+  "Valoriza o imóvel",
+];
+
+const upgrades = [
+  {
+    title: "Iluminação HiPool",
+    text: "Uma opção para modernizar a piscina, melhorar a visibilidade durante a noite e deixar a área externa mais aconchegante.",
+  },
+  {
+    title: "Iluminação LuxPool",
+    text: "Valoriza o formato da piscina e cria um efeito visual elegante em residências, condomínios, sítios e áreas de lazer.",
+  },
+  {
+    title: "Piscina com Cascata",
+    text: "Deixa o ambiente mais bonito e relaxante, além de ajudar na movimentação da água durante o uso.",
+  },
+  {
+    title: "Piscina com LED Noturno",
+    text: "Melhora a estética, aumenta a segurança e cria um visual diferenciado para aproveitar melhor a piscina à noite.",
+  },
+];
+
+const differentials = [
+  `Atendimento em ${city} e região`,
+  "Avaliação técnica da piscina",
+  "Reparos com fibra de vidro e resina",
+  "Conserto de trincas, furos e vazamentos",
+  "Pintura e revitalização",
+  "Manutenção preventiva e corretiva",
+  "Instalação de equipamentos",
+  "Soluções para iluminação, cascata e aquecimento",
+  "Serviço com foco em qualidade e durabilidade",
+];
+
+const orderedWarningSigns = [
+  ...warningSigns.slice(cardOffset),
+  ...warningSigns.slice(0, cardOffset),
+];
+
+const defaultFaqs: CityFaq[] = [
+  {
+    question: `Quanto custa reforma de piscina de fibra em ${city}?`,
+    answer: `O valor depende do tamanho da piscina, do estado da fibra, da pintura e dos reparos necessários. Entre em contato para solicitar uma avaliação em ${city}.`,
+  },
+  {
+    question: `Vocês fazem conserto de vazamento em piscina de fibra em ${city}?`,
+    answer: "Sim. Avaliamos o vazamento, corrigimos a fibra de vidro e fazemos o acabamento adequado para devolver segurança ao uso.",
+  },
+  {
+    question: "É possível pintar piscina de fibra antiga?",
+    answer: "Sim, desde que a estrutura esteja adequada para receber preparação, lixamento, correção de imperfeições e pintura.",
+  },
+  {
+    question: `Vocês fazem orçamento em ${city}?`,
+    answer: `Sim. O orçamento pode ser solicitado pelo WhatsApp para reforma, conserto, restauração ou manutenção de piscina em ${city}.`,
+  },
+];
+
+const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={image}
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: title, url: canonical }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink">
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.72), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh-M.webp')`}
+      aria-hidden="true"
+    />
+    <div
+      class="absolute inset-0 hidden bg-cover bg-center bg-no-repeat md:block"
+      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.72), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
+      aria-hidden="true"
+    />
+
+    <div class="relative container-site flex min-h-[640px] items-center py-20 md:min-h-[720px] md:py-28">
+      <div class="mx-auto w-full min-w-0 max-w-5xl text-center text-white">
+        <p class="eyebrow text-white/85">Casa e Piscina em {city}</p>
+        <h1 class="mt-5 text-4xl font-black leading-tight md:text-7xl">
+          Reforma de Piscina de Fibra em {city}
+        </h1>
+        <p class="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/90 md:text-xl">
+          {heroText}
+        </p>
+        <a class="btn btn-lg btn-primary mt-10 w-full sm:w-auto" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Pedir orçamento pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <HomeFeatures />
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <article class="min-w-0">
+        <div class="grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+          <div>
+            <p class="eyebrow mb-4">Avaliação técnica</p>
+            <h2 class="section-title">Sua piscina pode voltar a ficar bonita, segura e pronta para uso</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>{introParagraph}</p>
+              <p>A piscina de fibra de vidro é uma excelente opção por sua resistência, praticidade e acabamento, mas com o passar do tempo pode precisar de reparos técnicos, restauração, revitalização e manutenção preventiva.</p>
+              <p>Atendemos clientes residenciais, condomínios, sítios, chácaras, clubes e empresas em {city}, sempre com avaliação técnica, mão de obra especializada e materiais adequados para cada tipo de serviço.</p>
+            </div>
+          </div>
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/conserto-de-piscina-de-fibra.webp" alt={`Piscina de fibra reformada em ${city}`} loading="eager" />
+          </figure>
+        </div>
+
+        <section id="conserto" class="mt-16 scroll-mt-28">
+          <div class="max-w-4xl">
+            <p class="eyebrow mb-4">Conserto de piscina</p>
+            <h2 class="section-title">Conserto de Piscina em {city}</h2>
+            <h3 class="mt-5 text-2xl font-black leading-tight text-brand-ink">Reparo de trincas, furos e vazamentos</h3>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>{repairIntro}</p>
+              <p>Com o tempo, a piscina pode sofrer danos causados pelo uso constante, movimentação do solo, exposição ao sol, produtos químicos inadequados ou falta de manutenção. Quando isso acontece, é importante realizar o reparo o quanto antes para evitar que o problema aumente.</p>
+              <p>Realizamos o conserto de piscina de fibra em {city} com aplicação de fibra de vidro, resina, massa técnica, lixamento, nivelamento, impermeabilização e acabamento final.</p>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {orderedWarningSigns.map((sign) => (
+              <div class="card card-hover flex min-h-[132px] flex-col justify-between p-5">
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-ink text-white" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </span>
+                <p class="mt-5 text-base font-black leading-snug text-brand-ink">{sign}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="restauracao" class="mt-16 grid gap-10 scroll-mt-28 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/piscinas-belo-horizonte.jpg" alt={`Restauração de piscina de fibra em ${city}`} loading="lazy" />
+          </figure>
+          <div>
+            <p class="eyebrow mb-4">Restauração completa</p>
+            <h2 class="section-title">Restauração de Piscina em {city}</h2>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>{restorationIntro}</p>
+              <p>Durante o processo, avaliamos a estrutura, identificamos trincas, furos, desgastes, falhas na fibra de vidro e problemas no acabamento. Depois disso, realizamos os reparos necessários para devolver resistência, brilho e proteção.</p>
+              <p>A restauração pode incluir lixamento completo, reparos com fibra de vidro, aplicação de resina, correção de imperfeições, pintura, revitalização e revisão dos equipamentos.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-16 rounded-lg bg-[#f4f7f8] p-7 md:p-9">
+          <h3 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">Quando restaurar uma piscina de fibra?</h3>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">A restauração é recomendada quando a piscina já não apresenta apenas pequenos problemas isolados, mas um conjunto de desgastes visíveis. Isso acontece principalmente em piscinas antigas, mal conservadas ou que ficaram muito tempo sem manutenção adequada.</p>
+          <p class="mt-5 text-lg leading-8 text-brand-muted">Se a sua piscina em {city} está opaca, manchada, com trincas ou com aparência envelhecida, a restauração pode ser a melhor alternativa para evitar a troca completa da piscina.</p>
+        </section>
+
+        <section id="reparos" class="mt-16 scroll-mt-28">
+          <div class="grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-start">
+            <div>
+              <p class="eyebrow mb-4">Fibra de vidro</p>
+              <h2 class="section-title">Conserto de piscina de fibra</h2>
+              <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+                <p>O conserto de piscina de fibra exige conhecimento técnico e materiais corretos. Diferente de reparos improvisados, o serviço profissional garante maior durabilidade, melhor acabamento e mais segurança para o uso diário.</p>
+                <p>A fibra de vidro precisa ser tratada com cuidado para que o reparo fique firme, nivelado e resistente à água, ao sol e aos produtos utilizados na limpeza da piscina. Esse cuidado é essencial no conserto de piscina de fibra em {city}.</p>
+              </div>
+            </div>
+            <div class="card p-6">
+              <h3 class="text-2xl font-black text-brand-ink">Serviços mais comuns</h3>
+              <ul class="mt-6 grid gap-3 text-base font-bold text-brand-muted sm:grid-cols-2 md:grid-cols-1">
+                {repairServices.map((service) => (
+                  <li class="border-l-4 border-brand-ink pl-4">{service}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-16 grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+          <figure>
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-de-piscina-de-fibra-jpg.webp" alt={`Revitalização de piscina de fibra em ${city}`} loading="lazy" />
+          </figure>
+          <div>
+            <p class="eyebrow mb-4">Renovação visual</p>
+            <h2 class="section-title">Revitalização de piscina de fibra</h2>
+            <h3 class="mt-5 text-2xl font-black leading-tight text-brand-ink">Pintura, lixamento e acabamento</h3>
+            <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>A revitalização de piscina de fibra é ideal para quem deseja renovar a aparência da piscina sem precisar fazer uma reforma estrutural completa. Esse serviço é indicado quando a piscina está desbotada, sem brilho, com manchas superficiais ou com sinais de desgaste no acabamento.</p>
+              <p>Em muitos casos, a revitalização inclui limpeza técnica, lixamento, pequenos reparos, polimento, pintura ou aplicação de acabamento específico para piscinas de fibra.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-16 rounded-lg bg-brand-ink p-7 text-white md:p-9">
+          <h2 class="text-3xl font-black leading-tight md:text-4xl">Fibra de vidro: resistência e durabilidade para sua piscina</h2>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-white/78">
+            <p>A fibra de vidro é muito utilizada em piscinas devido à sua resistência, leveza e boa durabilidade. Porém, para manter essas características, é essencial que os reparos e reformas sejam feitos com técnicas adequadas.</p>
+            <p>Quando aplicada corretamente, a fibra de vidro ajuda a reforçar a estrutura da piscina, corrigir danos, impedir vazamentos e aumentar a vida útil do equipamento.</p>
+            <p>Por isso, ao contratar um serviço de {cityService}, escolha profissionais que entendam do material e utilizem produtos próprios para esse tipo de aplicação.</p>
+          </div>
+        </section>
+
+        <section class="mt-16">
+          <div class="grid gap-10 md:grid-cols-[1fr_0.95fr] md:items-center">
+            <div>
+              <p class="eyebrow mb-4">Restaurador especializado</p>
+              <h2 class="section-title">Restaurador de piscina de fibra em {city}</h2>
+              <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+              <p>Se você procura um restaurador de piscina de fibra em {city}, conte com uma equipe preparada para avaliar o estado da sua piscina e indicar a melhor solução.</p>
+                <p>Cada piscina possui uma necessidade diferente. Algumas precisam apenas de revitalização estética, enquanto outras exigem reparos estruturais, reforço com fibra, correção de vazamentos e pintura completa.</p>
+                <p>Nosso atendimento é feito com análise cuidadosa, orientação clara e execução profissional, buscando entregar uma piscina renovada, bonita e pronta para uso.</p>
+              </div>
+            </div>
+            <figure>
+              <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra-jpg.webp" alt={`Piscina de fibra em processo de reforma em ${city}`} loading="lazy" />
+            </figure>
+          </div>
+        </section>
+
+        <section id="manutencao" class="mt-16 scroll-mt-28">
+          <p class="eyebrow mb-4">Cuidado completo durante todo o ano</p>
+          <h2 class="section-title">Assistência Técnica e Manutenção</h2>
+          <h3 class="mt-5 text-2xl font-black leading-tight text-brand-ink">Manutenção preventiva e corretiva</h3>
+          <p class="mt-6 max-w-4xl text-lg leading-8 text-brand-muted">Além da reforma e do conserto de piscina, também oferecemos assistência técnica e manutenção para manter sua piscina funcionando corretamente. A manutenção de piscina em {city} evita problemas maiores, preserva equipamentos, melhora a qualidade da água e aumenta a durabilidade da piscina.</p>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-2">
+            <div class="card p-6 md:p-7">
+              <h3 class="text-2xl font-black text-brand-ink">Serviços de assistência técnica</h3>
+              <ul class="mt-6 space-y-3 text-base font-bold text-brand-muted">
+                {technicalServices.map((service) => <li>{service}</li>)}
+              </ul>
+            </div>
+            <div class="card p-6 md:p-7">
+              <h3 class="text-2xl font-black text-brand-ink">Benefícios da manutenção preventiva</h3>
+              <ul class="mt-6 space-y-3 text-base font-bold text-brand-muted">
+                {maintenanceBenefits.map((benefit) => <li>{benefit}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="equipamentos" class="mt-16 grid gap-10 scroll-mt-28 md:grid-cols-[0.95fr_1.05fr] md:items-start">
+          <div class="space-y-8">
+            <div>
+              <p class="eyebrow mb-4">Filtragem e aquecimento</p>
+              <h2 class="section-title">Instalação de Filtragem</h2>
+            </div>
+            <div class="space-y-5 text-lg leading-8 text-brand-muted">
+              <p>A instalação de filtragem é essencial para manter a água limpa, cristalina e segura para o uso. Um sistema bem dimensionado remove impurezas, melhora a circulação da água e reduz a necessidade de manutenções frequentes.</p>
+              <p>Realizamos instalação, troca e revisão de filtros, bombas, registros, tubulações e demais componentes do sistema de filtragem.</p>
+              <h2 class="section-title pt-3">Aquecimento para Piscinas</h2>
+              <p>O aquecimento para piscinas é uma excelente solução para quem deseja aproveitar a piscina por mais tempo, inclusive em dias mais frios ou em períodos de menor incidência solar. Com o sistema adequado, sua piscina em {city} fica mais confortável, valorizada e funcional durante todo o ano.</p>
+              <h2 class="section-title pt-3">Manutenção de Piscinas em {city}</h2>
+              <p>Também realizamos manutenção preventiva e corretiva para preservar a estrutura, a água e os equipamentos, evitando que pequenos problemas virem reformas emergenciais.</p>
+            </div>
+          </div>
+          <div class="card p-6 md:p-7">
+            <h2 class="text-3xl font-black leading-tight text-brand-ink md:text-4xl">Equipamentos para Piscina</h2>
+            <p class="mt-4 leading-7 text-brand-muted">Também oferecemos orientação, instalação e manutenção de equipamentos para piscina, garantindo melhor desempenho, segurança e praticidade no uso diário.</p>
+            <ul class="mt-6 grid gap-3 text-base font-bold text-brand-muted sm:grid-cols-2">
+              {poolEquipment.map((item) => <li class="border-l-4 border-brand-line pl-4">{item}</li>)}
+            </ul>
+          </div>
+        </section>
+
+        <section class="mt-16">
+          <p class="eyebrow mb-4">Modernização</p>
+          <h2 class="section-title">Soluções completas para sua piscina</h2>
+          <p class="mt-6 max-w-4xl text-lg leading-8 text-brand-muted">Além de reforma, conserto e manutenção, também realizamos melhorias que valorizam a área de lazer e tornam o ambiente mais agradável.</p>
+
+          <div class="mt-10 grid gap-6 sm:grid-cols-2">
+            {upgrades.map((upgrade) => (
+              <article class="card card-hover p-6">
+                <h3 class="text-2xl font-black text-brand-ink">{upgrade.title}</h3>
+                <p class="mt-4 leading-7 text-brand-muted">{upgrade.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section class="mt-16 rounded-lg border border-brand-line bg-white p-7 shadow-sm shadow-brand-ink/5 md:p-9">
+          <p class="eyebrow mb-4">Atendimento local</p>
+          <h2 class="section-title">Atendimento em {city} e região</h2>
+          <p class="mt-6 text-lg leading-8 text-brand-muted">{localText}</p>
+          <p class="mt-5 text-lg leading-8 text-brand-muted">Além da página de {city}, você também pode conhecer nossos serviços principais de <a class="font-bold text-brand-ink underline" href="/reforma-de-piscina-de-fibra-em-belo-horizonte/">reforma de piscina de fibra</a>, <a class="font-bold text-brand-ink underline" href="/manutencao-de-piscina/">manutenção de piscina</a> e <a class="font-bold text-brand-ink underline" href="/pintura-de-piscina-de-fibra/">pintura de piscina de fibra</a>.</p>
+          {nearbyLinks.length > 0 && (
+            <div class="mt-7 flex flex-wrap gap-3">
+              {nearbyLinks.map((link) => (
+                <a class="btn btn-secondary" href={link.href}>Atendimento em {link.city}</a>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <section class="mt-16">
+          <p class="eyebrow mb-4">Dúvidas comuns</p>
+          <h2 class="section-title">Perguntas frequentes sobre reforma de piscina em {city}</h2>
+          <div class="mt-10 grid gap-5 md:grid-cols-2">
+            {pageFaqs.map((faq) => (
+              <article class="card p-6">
+                <h3 class="text-xl font-black leading-snug text-brand-ink">{faq.question}</h3>
+                <p class="mt-4 leading-7 text-brand-muted">{faq.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="diferenciais" class="mt-16 scroll-mt-28 rounded-lg bg-[#f4f7f8] p-7 md:p-9">
+          <div class="grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-start">
+            <div>
+              <p class="eyebrow mb-4">Qualidade e atendimento diferenciado</p>
+              <h2 class="section-title">Por que contratar uma empresa especializada em {city}?</h2>
+              <div class="mt-6 space-y-5 text-lg leading-8 text-brand-muted">
+                <p>Contratar profissionais especializados em {cityService} garante mais segurança, melhor acabamento e maior durabilidade no resultado final.</p>
+                <p>Serviços feitos sem técnica adequada podem causar novos vazamentos, manchas, descolamento da fibra e até comprometer a estrutura da piscina.</p>
+                <p>Nosso compromisso é oferecer pontualidade, transparência e cuidado em cada etapa do serviço, desde a primeira avaliação até a entrega final.</p>
+              </div>
+            </div>
+            <div class="card p-6">
+              <h3 class="text-2xl font-black text-brand-ink">Nossos diferenciais</h3>
+              <ul class="mt-6 space-y-3 text-base font-bold text-brand-muted">
+                {differentials.map((item) => <li class="border-l-4 border-brand-ink pl-4">{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="orcamento" class="mt-16 scroll-mt-28 overflow-hidden rounded-lg bg-brand-ink text-white">
+          <div class="grid gap-0 md:grid-cols-[1.05fr_0.95fr] md:items-stretch">
+            <div class="p-7 md:p-10">
+              <p class="eyebrow text-white/72">Orçamento</p>
+              <h2 class="mt-4 text-3xl font-black leading-tight md:text-4xl">Solicite um orçamento em {city}</h2>
+              <div class="mt-6 space-y-5 text-lg leading-8 text-white/78">
+                <p>{finalCta}</p>
+                <p>Se você precisa de reforma de piscina de fibra em {city}, conserto, restauração, revitalização, manutenção ou instalação de equipamentos, entre em contato e solicite uma avaliação.</p>
+                <p>Vamos analisar a situação da sua piscina e indicar a melhor solução para deixá-la bonita, segura e pronta para uso novamente.</p>
+                <p>Atendemos com compromisso, qualidade e experiência em serviços para piscinas de fibra de vidro.</p>
+              </div>
+              <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+                Pedir orçamento agora
+              </a>
+            </div>
+            <img class="h-full min-h-[300px] w-full object-cover" src="/image/empresa-de-manutencao-de-piscina.webp" alt={`Manutenção e reforma de piscina em ${city}`} loading="lazy" />
+          </div>
+        </section>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container-site text-center">
+      <h3 class="text-3xl font-black">Entre em contato agora mesmo</h3>
+      <p class="mx-auto mt-4 max-w-2xl text-white/86">Atendemos {city} e toda região metropolitana, entre em contato agora mesmo.</p>
+      <a class="btn btn-lg btn-primary mt-7" href={whatsappUrl()} target="_blank" rel="nofollow noopener">Pedir orçamento pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <AboutSection />
+  <SocialProof />
+</BaseLayout>

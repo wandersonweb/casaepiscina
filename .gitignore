@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+dist/
+
+# Local environment
+.env
+.env.*
+
+# Tooling and editor state
+.codex/
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,156 @@
+---
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import CTAWhatsapp from "../components/CTAWhatsapp.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+
+const stats = [
+  { value: "10+", label: "anos no mercado" },
+  { value: "500+", label: "serviços realizados" },
+  { value: "100%", label: "foco na satisfação" },
+];
+
+const values = [
+  {
+    title: "Qualidade",
+    text: "Utilizamos técnicas avançadas e materiais de primeira linha para garantir resultados duradouros e satisfatórios.",
+  },
+  {
+    title: "Atendimento",
+    text: "Ouvimos suas necessidades, respondemos suas perguntas e oferecemos um serviço personalizado em cada etapa.",
+  },
+  {
+    title: "Compromisso",
+    text: "Tratamos cada projeto com seriedade, clareza e cuidado, seja uma piscina de fibra ou uma caixa d'água.",
+  },
+  {
+    title: "Durabilidade",
+    text: "Buscamos soluções que preservam beleza, funcionalidade e segurança por muito mais tempo.",
+  },
+];
+---
+
+<BaseLayout
+  title="Sobre empresa - Casa e Piscina"
+  description="Conheça a Casa e Piscina, empresa especializada em trabalhos e reformas de fibra de vidro em Belo Horizonte e região metropolitana."
+  canonical="https://casaepiscina.com.br/sobre-empresa/"
+  image="/image/reforma-piscina-de-fibra.webp"
+>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Sobre empresa", url: "/sobre-empresa/" }]} />
+
+  <section class="relative overflow-hidden bg-brand-cream">
+    <div class="container-site grid gap-12 py-16 md:grid-cols-[1fr_0.9fr] md:items-center md:py-20">
+      <div>
+        <p class="eyebrow mb-4">Quem Somos</p>
+        <h1 class="max-w-3xl text-4xl font-black leading-tight text-brand-ink md:text-6xl">
+          Especialistas em fibra de vidro em Belo Horizonte
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-brand-muted">
+          Bem-vindo à nossa empresa! Somos especializados em trabalhos e reformas de fibra de vidro em geral, atendendo a toda a região de Belo Horizonte e região metropolitana. Com anos de experiência e conhecimento no setor, nos dedicamos a oferecer serviços de alta qualidade para nossos clientes.
+        </p>
+        <a class="btn btn-lg btn-primary mt-8" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Quero Fazer um orçamento!
+        </a>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div class="border-l-4 border-brand-ink bg-white px-5 py-4 shadow-sm shadow-brand-ink/5">
+              <p class="text-3xl font-black leading-none text-brand-ink">{stat.value}</p>
+              <p class="mt-2 text-xs font-black uppercase tracking-[0.12em] text-brand-muted">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="relative">
+        <img
+          class="aspect-[4/5] w-full rounded-lg object-cover shadow-xl shadow-brand-ink/12 md:aspect-[5/6]"
+          src="/image/reforma-piscina-de-fibra.webp"
+          alt="Piscina de fibra reformada pela Casa e Piscina"
+          loading="eager"
+        />
+        <div class="absolute bottom-5 left-5 max-w-[240px] rounded-lg bg-brand-ink p-5 text-white shadow-xl shadow-brand-ink/20">
+          <p class="text-sm font-black uppercase tracking-[0.12em] text-white/70">Serviço com</p>
+          <p class="mt-1 text-2xl font-black leading-tight">cuidado técnico</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <div>
+        <p class="eyebrow mb-4">Nossa Missão</p>
+        <h2 class="section-title">Solucoes sob medida para cada cliente</h2>
+      </div>
+      <div class="space-y-6 text-lg leading-8 text-brand-muted">
+        <p>
+          Entendemos a importância de manter suas instalações em perfeito estado, seja para fins recreativos ou para garantir o fornecimento seguro de água. Por isso, nossa empresa está comprometida em oferecer soluções sob medida, atendendo às necessidades específicas de cada cliente.
+        </p>
+        <blockquote class="border-l-4 border-brand-ink bg-[#f4f7f8] p-6 text-2xl font-bold leading-9 text-brand-ink">
+          “Com nossa vasta experiência em conserto de piscinas, estamos prontos para oferecer soluções personalizadas para todas as necessidades.”
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-[#f4f7f8]">
+    <div class="container-site">
+      <div class="max-w-3xl">
+        <p class="eyebrow mb-4">Valores</p>
+        <h2 class="section-title">O que guia nosso trabalho</h2>
+        <p class="lead mt-5">
+          Nossa equipe de profissionais qualificados está pronta para lidar com uma variedade de projetos, desde a reforma de piscinas de fibra até reparos em caixas d'água.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {values.map((value, index) => (
+          <article class="card card-hover p-7">
+            <p class="text-sm font-black text-brand-muted">0{index + 1}</p>
+            <h3 class="mt-5 text-2xl font-black text-brand-ink">{value.title}</h3>
+            <p class="mt-4 leading-7 text-brand-muted">{value.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div class="space-y-6 text-lg leading-8 text-brand-muted">
+        <p>
+          Além da excelência em qualidade de trabalho, valorizamos o atendimento ao cliente. Nossa equipe dedicada está pronta para ouvir suas necessidades, responder suas perguntas e fornecer um serviço personalizado. Priorizamos sua satisfação em todas as etapas do projeto.
+        </p>
+        <p>
+          Seja qual for o tamanho ou a complexidade do trabalho, estamos prontos para ajudar. Entre em contato conosco hoje mesmo e deixe-nos transformar suas ideias em realidade, garantindo a beleza, funcionalidade e durabilidade de suas instalações de fibra de vidro.
+        </p>
+        <a class="btn btn-lg btn-primary" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
+          Quero Fazer um orçamento!
+        </a>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+        <div class="rounded-lg bg-brand-ink p-7 text-white shadow-lg shadow-brand-ink/10">
+          <p class="text-sm font-black uppercase tracking-[0.12em] text-white/70">Responsáveis técnicos</p>
+          <h2 class="mt-4 text-3xl font-black leading-tight">Bruno Martins e Adriano Junior</h2>
+          <p class="mt-4 leading-7 text-white/76">Acompanhamento técnico para reformas, reparos e manutenção em fibra de vidro.</p>
+        </div>
+        <img
+          class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+          src="/image/reformando-piscina-em-bh.webp"
+          alt="Equipe trabalhando em reforma de piscina de fibra"
+          loading="lazy"
+        />
+        <img
+          class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+          src="/image/empresa-de-manutencao-de-piscina.webp"
+          alt="Serviço de manutenção de piscina de fibra"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <CTAWhatsapp />
+</BaseLayout>
