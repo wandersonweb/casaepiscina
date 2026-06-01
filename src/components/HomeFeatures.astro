@@ -1,7 +1,7 @@
 ---
-import piscinaIcon from "../assets/icons/piscina.webp";
-import qualidadeIcon from "../assets/icons/qualidade.webp";
-import consertoIcon from "../assets/icons/conserto.webp";
+import piscinaIcon from "../assets/icons/piscina-112.webp";
+import qualidadeIcon from "../assets/icons/qualidade-112.webp";
+import consertoIcon from "../assets/icons/conserto-112.webp";
 
 const features = [
   {
@@ -28,7 +28,7 @@ const features = [
       {features.map((feature) => (
         <div class="card p-7 text-center">
           <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#e8eef1]">
-            <img src={feature.icon.src} alt="" class="h-16 w-16 object-contain" loading="lazy" decoding="async" />
+            <img src={feature.icon.src} alt="" width="64" height="64" class="h-16 w-16 object-contain" loading="lazy" decoding="async" />
           </div>
           <h2 class="mt-5 text-2xl font-black text-brand-ink">{feature.title}</h2>
           <p class="mx-auto mt-4 max-w-sm text-base leading-7 text-brand-muted">{feature.description}</p>

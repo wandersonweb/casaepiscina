@@ -1,14 +1,14 @@
 ---
-const { href, title, description, image, alt, label = "Ver serviço" } = Astro.props;
+const { href, title, description, image, alt, srcset, sizes = "(min-width: 1024px) 360px, (min-width: 640px) 50vw, calc(100vw - 32px)", label = "Ver serviço" } = Astro.props;
 ---
 
 <article class="card card-hover overflow-hidden">
   <a href={href}>
-    <img class="aspect-[4/3] w-full object-cover" src={image} alt={alt} loading="lazy" />
+    <img class="aspect-[4/3] w-full object-cover" src={image} srcset={srcset} sizes={sizes} alt={alt} width="640" height="480" loading="lazy" decoding="async" />
   </a>
   <div class="p-6">
     <p class="card-title"><a class="hover:text-brand-ink" href={href}>{title}</a></p>
     <p class="mt-3 text-sm leading-6 text-brand-muted">{description}</p>
-    <a class="btn btn-ocean mt-5" href={href}>{label}</a>
+    <a class="btn btn-ocean mt-5" href={href} aria-label={`Ver serviço: ${title}`}>{label}</a>
   </div>
 </article>

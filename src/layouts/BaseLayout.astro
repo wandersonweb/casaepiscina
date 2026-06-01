@@ -13,6 +13,12 @@ interface Props {
   canonical?: string;
   image?: string;
   noindex?: boolean;
+  imagePreloads?: {
+    href: string;
+    media?: string;
+    imagesrcset?: string;
+    imagesizes?: string;
+  }[];
 }
 
 const {
@@ -21,21 +27,54 @@ const {
   canonical = `${siteConfig.url}${Astro.url.pathname}`,
   image = siteConfig.defaultImage,
   noindex = false,
+  imagePreloads = [],
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTPT96JJRX"></script>
+    {imagePreloads.map((preload) => (
+      <link
+        rel="preload"
+        as="image"
+        href={preload.href}
+        media={preload.media}
+        imagesrcset={preload.imagesrcset}
+        imagesizes={preload.imagesizes}
+        fetchpriority="high"
+      />
+    ))}
+
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
+      window.gtag = function gtag() {
         dataLayer.push(arguments);
+      };
+
+      function loadGoogleTag() {
+        if (window.__googleTagLoaded) return;
+        window.__googleTagLoaded = true;
+
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-PTPT96JJRX";
+        document.head.appendChild(script);
+
+        window.gtag("js", new Date());
+        window.gtag("config", "G-PTPT96JJRX");
       }
-      gtag("js", new Date());
-      gtag("config", "G-PTPT96JJRX");
+
+      ["pointerdown", "keydown", "touchstart"].forEach(function (eventName) {
+        window.addEventListener(eventName, loadGoogleTag, { once: true, passive: true });
+      });
+
+      window.addEventListener("load", function () {
+        window.setTimeout(function () {
+          var schedule = window.requestIdleCallback || function (callback) { return window.setTimeout(callback, 1); };
+          schedule(loadGoogleTag, { timeout: 2000 });
+        }, 12000);
+      }, { once: true });
     </script>
 
     <!-- Google Search Console -->

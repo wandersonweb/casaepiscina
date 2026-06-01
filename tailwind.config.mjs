@@ -15,9 +15,9 @@ export default {
           cream: "#fffdf8",
           line: "#d7e5e8",
           muted: "#526873",
-          whatsapp: "#168a42",
-          "whatsapp-hover": "#0f7536",
-          gold: "#b17822",
+          whatsapp: "#0f7536",
+          "whatsapp-hover": "#0b5f2a",
+          gold: "#87540f",
         },
       },
       fontFamily: {

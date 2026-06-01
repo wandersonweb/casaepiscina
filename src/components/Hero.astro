@@ -3,16 +3,26 @@ import { whatsappUrl } from "../data/site";
 ---
 
 <section class="relative isolate overflow-hidden bg-brand-ink">
-  <div
-    class="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
-    style={`background-image: linear-gradient(rgba(14, 36, 48, 0.7), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh-M.webp')`}
-    aria-hidden="true"
-  />
-  <div
-    class="absolute inset-0 hidden bg-cover bg-center bg-no-repeat md:block"
-    style={`background-image: linear-gradient(rgba(14, 36, 48, 0.7), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
-    aria-hidden="true"
-  />
+  <picture aria-hidden="true">
+    <source
+      media="(min-width: 768px)"
+      srcset="/image/generated/reforma-de-piscina-de-fibra-em-bh-960.webp 960w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp 1280w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1600.webp 1600w"
+      sizes="100vw"
+    />
+    <img
+      class="absolute inset-0 h-full w-full object-cover"
+      src="/image/generated/reforma-de-piscina-de-fibra-em-bh-M-640.webp"
+      srcset="/image/generated/reforma-de-piscina-de-fibra-em-bh-M-640.webp 640w, /image/generated/reforma-de-piscina-de-fibra-em-bh-M-960.webp 960w"
+      sizes="100vw"
+      width="640"
+      height="800"
+      alt=""
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </picture>
+  <div class="absolute inset-0 bg-brand-ink/70 md:bg-brand-ink/65" aria-hidden="true"></div>
 
   <div class="relative container-site flex min-h-[650px] items-center py-20 md:min-h-[740px] md:py-28">
     <div class="mx-auto w-full min-w-0 max-w-4xl text-center text-white">
