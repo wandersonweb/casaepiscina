@@ -7,6 +7,9 @@ export default defineConfig({
   site: "https://casaepiscina.com.br",
   trailingSlash: "always",
   integrations: [mdx(), tailwind(), sitemap()],
+  build: {
+    inlineStylesheets: "always",
+  },
   vite: {
     build: {
       cssCodeSplit: false,

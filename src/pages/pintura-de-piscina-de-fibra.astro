@@ -25,6 +25,11 @@ const gelCoatSteps = [
   "Aplique o gel coat em camadas uniformes, usando ferramentas adequadas como rolo ou pincel.",
   "Respeite o intervalo indicado pelo fabricante entre as camadas e durante a cura final.",
 ];
+
+const heroSrc = "/image/generated/pintura-de-piscina-de-fibra-bh-250.webp";
+const featuredPaintSrc = "/image/generated/pintura-de-piscina-de-fibra-250.webp";
+const prepPaintSrc = "/image/generated/como-pintar-piscina-de-fibra-de-vidro-250.webp";
+const gelCoatPaintSrc = "/image/generated/tinta-para-pintura-de-piscina-de-fibra-250.webp";
 ---
 
 <BaseLayout
@@ -32,15 +37,26 @@ const gelCoatSteps = [
   description="Se você está pensando em pintar sua própria piscina de fibra, é importante seguir alguns passos essenciais para garantir um resultado perfeito."
   canonical="https://casaepiscina.com.br/pintura-de-piscina-de-fibra/"
   image="/image/pintura-de-piscina-de-fibra.jpg"
+  imagePreloads={[
+    { href: heroSrc },
+  ]}
 >
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Pintura de Piscina de Fibra", url: "/pintura-de-piscina-de-fibra/" }]} />
 
   <section class="relative isolate overflow-hidden bg-brand-ink">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.74), rgba(14, 36, 48, 0.62)), url('/image/pintura-de-piscina-de-fibra-BH.jpg')`}
-      aria-hidden="true"
-    />
+    <picture class="absolute inset-0 block h-full w-full" aria-hidden="true">
+      <img
+        class="h-full w-full object-cover object-center"
+        src={heroSrc}
+        alt=""
+        width="250"
+        height="250"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(14,36,48,0.74),rgba(14,36,48,0.62))]" aria-hidden="true"></div>
     <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
       <div class="mx-auto max-w-5xl text-white">
         <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
@@ -69,7 +85,7 @@ const gelCoatSteps = [
             Se você está pensando em pintar sua própria piscina de fibra, é importante seguir alguns passos essenciais para garantir um resultado perfeito. Preparamos algumas dicas para ajudá-lo nessa tarefa e garantir que sua piscina fique protegida e com uma aparência incrível.
           </p>
           <figure class="mt-8">
-            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src="/image/pintura-de-piscina-de-fibra.jpg" alt="Pintura de piscina de fibra com Gel Coat" loading="eager" />
+            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src={featuredPaintSrc} alt="Pintura de piscina de fibra com Gel Coat" width="250" height="250" loading="eager" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Pintura de piscina de fibra com Gel Coat para proteger e renovar o acabamento.</figcaption>
           </figure>
           <div class="mt-8 rounded-lg border border-brand-line bg-[#f4f7f8] p-6">
@@ -107,7 +123,7 @@ const gelCoatSteps = [
             </p>
           </div>
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/como-pintar-piscina-de-fibra-de-vidro.jpg" alt="Como pintar piscina de fibra de vidro" loading="lazy" />
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={prepPaintSrc} alt="Como pintar piscina de fibra de vidro" width="250" height="250" loading="lazy" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Como pintar piscina de fibra de vidro com preparação correta da superfície.</figcaption>
           </figure>
         </section>
@@ -122,7 +138,7 @@ const gelCoatSteps = [
 
         <section id="aplicacao" class="mt-14 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <figure class="md:order-1">
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/tinta-para-pintura-de-piscina-de-fibra.jpg" alt="Tinta para pintura de piscina de fibra" loading="lazy" />
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={gelCoatPaintSrc} alt="Tinta para pintura de piscina de fibra" width="250" height="250" loading="lazy" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Tinta para pintura de piscina de fibra aplicada com cuidado técnico.</figcaption>
           </figure>
           <div class="md:order-2">
@@ -155,7 +171,7 @@ const gelCoatSteps = [
             </div>
           </div>
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/pintura-de-piscina-de-fibra-BH.jpg" alt="Protegendo a piscina com pintura da fibra de vidro" loading="lazy" />
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={heroSrc} alt="Protegendo a piscina com pintura da fibra de vidro" width="250" height="250" loading="lazy" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Protegendo a piscina com uma pintura da fibra de vidro.</figcaption>
           </figure>
         </section>

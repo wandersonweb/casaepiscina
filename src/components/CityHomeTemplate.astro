@@ -43,6 +43,27 @@ const {
 
 const canonical = new URL(`/${slug}/`, Astro.url.origin).toString();
 const cityService = `reforma de piscina de fibra em ${city}`;
+const heroDesktopSrc = "/image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp";
+const heroDesktopSrcSet = "/image/generated/reforma-de-piscina-de-fibra-em-bh-960.webp 960w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp 1280w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1440.webp 1440w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1600.webp 1600w";
+const heroMobileSrc = "/image/generated/reforma-de-piscina-de-fibra-em-bh-M-640.webp";
+const heroMobileSrcSet = "/image/generated/reforma-de-piscina-de-fibra-em-bh-M-640.webp 640w, /image/generated/reforma-de-piscina-de-fibra-em-bh-M-960.webp 960w";
+const heroSizes = "100vw";
+const featuredPoolSrc = "/image/generated/conserto-de-piscina-de-fibra-640.webp";
+const featuredPoolSrcSet = "/image/generated/conserto-de-piscina-de-fibra-480.webp 480w, /image/generated/conserto-de-piscina-de-fibra-640.webp 640w, /image/generated/conserto-de-piscina-de-fibra-720.webp 720w, /image/generated/conserto-de-piscina-de-fibra-960.webp 960w";
+const featuredPoolSizes = "(min-width: 768px) 45vw, 100vw";
+const restorationPoolSrc = "/image/generated/piscinas-belo-horizonte-480.webp";
+const restorationPoolSrcSet = "/image/generated/piscinas-belo-horizonte-480.webp 480w, /image/generated/piscinas-belo-horizonte-640.webp 640w, /image/generated/piscinas-belo-horizonte-720.webp 720w";
+const restorationPoolSizes = "(min-width: 768px) 42vw, 100vw";
+const revitalizationPoolSrc = "/image/generated/reforma-piscina-de-fibra-640.webp";
+const revitalizationPoolSrcSet = "/image/generated/reforma-piscina-de-fibra-480.webp 480w, /image/generated/reforma-piscina-de-fibra-640.webp 640w, /image/generated/reforma-piscina-de-fibra-800.webp 800w";
+const revitalizationPoolSizes = "(min-width: 768px) 45vw, 100vw";
+const restorerPoolSrc = "/image/generated/reforma-piscina-de-fibra-640.webp";
+const restorerPoolSrcSet = "/image/generated/reforma-piscina-de-fibra-480.webp 480w, /image/generated/reforma-piscina-de-fibra-640.webp 640w, /image/generated/reforma-piscina-de-fibra-800.webp 800w";
+const restorerPoolSizes = "(min-width: 768px) 42vw, 100vw";
+const budgetPoolMobileSrc = "/image/generated/empresa-de-manutencao-de-piscina-m-768.webp";
+const budgetPoolDesktopSrc = "/image/generated/empresa-de-manutencao-de-piscina-1280.webp";
+const budgetPoolDesktopSrcSet = "/image/generated/empresa-de-manutencao-de-piscina-960.webp 960w, /image/generated/empresa-de-manutencao-de-piscina-1280.webp 1280w, /image/generated/empresa-de-manutencao-de-piscina-1600.webp 1600w";
+const budgetPoolSizes = "(min-width: 768px) 45vw, 100vw";
 
 const warningSigns = [
   "Trincas aparentes na estrutura",
@@ -163,20 +184,30 @@ const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
   description={description}
   canonical={canonical}
   image={image}
+  imagePreloads={[
+    { href: heroMobileSrc, media: "(max-width: 767px)", imagesrcset: heroMobileSrcSet, imagesizes: heroSizes },
+    { href: heroDesktopSrc, media: "(min-width: 768px)", imagesrcset: heroDesktopSrcSet, imagesizes: heroSizes },
+  ]}
 >
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: title, url: canonical }]} />
 
   <section class="relative isolate overflow-hidden bg-brand-ink">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.72), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh-M.webp')`}
-      aria-hidden="true"
-    />
-    <div
-      class="absolute inset-0 hidden bg-cover bg-center bg-no-repeat md:block"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.72), rgba(14, 36, 48, 0.58)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
-      aria-hidden="true"
-    />
+    <picture class="absolute inset-0 block h-full w-full" aria-hidden="true">
+      <source media="(min-width: 768px)" srcset={heroDesktopSrcSet} sizes={heroSizes} />
+      <img
+        class="h-full w-full object-cover object-center"
+        src={heroMobileSrc}
+        srcset={heroMobileSrcSet}
+        sizes={heroSizes}
+        alt=""
+        width="960"
+        height="1280"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(14,36,48,0.72),rgba(14,36,48,0.58))]" aria-hidden="true"></div>
 
     <div class="relative container-site flex min-h-[640px] items-center py-20 md:min-h-[720px] md:py-28">
       <div class="mx-auto w-full min-w-0 max-w-5xl text-center text-white">
@@ -210,7 +241,17 @@ const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
             </div>
           </div>
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/conserto-de-piscina-de-fibra.webp" alt={`Piscina de fibra reformada em ${city}`} loading="eager" />
+            <img
+              class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+              src={featuredPoolSrc}
+              srcset={featuredPoolSrcSet}
+              sizes={featuredPoolSizes}
+              alt={`Piscina de fibra reformada em ${city}`}
+              width="640"
+              height="480"
+              loading="eager"
+              decoding="async"
+            />
           </figure>
         </div>
 
@@ -242,7 +283,17 @@ const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
 
         <section id="restauracao" class="mt-16 grid gap-10 scroll-mt-28 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/piscinas-belo-horizonte.jpg" alt={`Restauração de piscina de fibra em ${city}`} loading="lazy" />
+            <img
+              class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+              src={restorationPoolSrc}
+              srcset={restorationPoolSrcSet}
+              sizes={restorationPoolSizes}
+              alt={`Restauração de piscina de fibra em ${city}`}
+              width="480"
+              height="480"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
           <div>
             <p class="eyebrow mb-4">Restauração completa</p>
@@ -284,7 +335,17 @@ const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
 
         <section class="mt-16 grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-de-piscina-de-fibra-jpg.webp" alt={`Revitalização de piscina de fibra em ${city}`} loading="lazy" />
+            <img
+              class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+              src={revitalizationPoolSrc}
+              srcset={revitalizationPoolSrcSet}
+              sizes={revitalizationPoolSizes}
+              alt={`Revitalização de piscina de fibra em ${city}`}
+              width="640"
+              height="640"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
           <div>
             <p class="eyebrow mb-4">Renovação visual</p>
@@ -318,7 +379,17 @@ const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
               </div>
             </div>
             <figure>
-              <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra-jpg.webp" alt={`Piscina de fibra em processo de reforma em ${city}`} loading="lazy" />
+              <img
+                class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+                src={restorerPoolSrc}
+                srcset={restorerPoolSrcSet}
+                sizes={restorerPoolSizes}
+                alt={`Piscina de fibra em processo de reforma em ${city}`}
+                width="640"
+                height="640"
+                loading="lazy"
+                decoding="async"
+              />
             </figure>
           </div>
         </section>
@@ -446,7 +517,10 @@ const pageFaqs = faqs.length > 0 ? faqs : defaultFaqs;
                 Pedir orçamento agora
               </a>
             </div>
-            <img class="h-full min-h-[300px] w-full object-cover" src="/image/empresa-de-manutencao-de-piscina.webp" alt={`Manutenção e reforma de piscina em ${city}`} loading="lazy" />
+            <picture class="block h-full min-h-[300px] w-full">
+              <source media="(min-width: 768px)" srcset={budgetPoolDesktopSrcSet} sizes={budgetPoolSizes} />
+              <img class="h-full min-h-[300px] w-full object-cover" src={budgetPoolMobileSrc} alt={`Manutenção e reforma de piscina em ${city}`} width="768" height="768" loading="lazy" decoding="async" />
+            </picture>
           </div>
         </section>
       </article>

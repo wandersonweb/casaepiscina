@@ -28,6 +28,10 @@ const contactMethods = [
 ];
 
 const technicalLeads = ["Bruno Martins", "Adriano Junior"];
+const heroMobileSrc = "/image/generated/empresa-de-manutencao-de-piscina-m-768.webp";
+const heroDesktopSrc = "/image/generated/empresa-de-manutencao-de-piscina-1280.webp";
+const heroDesktopSrcSet = "/image/generated/empresa-de-manutencao-de-piscina-960.webp 960w, /image/generated/empresa-de-manutencao-de-piscina-1280.webp 1280w, /image/generated/empresa-de-manutencao-de-piscina-1600.webp 1600w";
+const heroSizes = "100vw";
 ---
 
 <BaseLayout
@@ -35,15 +39,19 @@ const technicalLeads = ["Bruno Martins", "Adriano Junior"];
   description="Entre em contato com a Casa e Piscina pelo WhatsApp ou formulário para solicitar orçamento de reforma, conserto, pintura e manutenção de piscina de fibra."
   canonical="https://casaepiscina.com.br/contato/"
   image="/image/conserto-de-piscina-de-fibra.webp"
+  imagePreloads={[
+    { href: heroMobileSrc, media: "(max-width: 767px)" },
+    { href: heroDesktopSrc, media: "(min-width: 768px)", imagesrcset: heroDesktopSrcSet, imagesizes: heroSizes },
+  ]}
 >
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Contato", url: "/contato/" }]} />
 
   <section class="relative isolate overflow-hidden bg-brand-ink">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.78), rgba(14, 36, 48, 0.64)), url('/image/empresa-de-manutencao-de-piscina.webp')`}
-      aria-hidden="true"
-    />
+    <picture class="absolute inset-0 block h-full w-full" aria-hidden="true">
+      <source media="(min-width: 768px)" srcset={heroDesktopSrcSet} sizes={heroSizes} />
+      <img class="h-full w-full object-cover object-center" src={heroMobileSrc} alt="" width="768" height="768" loading="eager" fetchpriority="high" decoding="async" />
+    </picture>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(14,36,48,0.78),rgba(14,36,48,0.64))]" aria-hidden="true"></div>
     <div class="relative container-site grid min-h-[520px] gap-10 py-20 md:grid-cols-[1fr_0.78fr] md:items-center md:py-24">
       <div class="text-white">
         <p class="eyebrow text-white/78">Contato</p>

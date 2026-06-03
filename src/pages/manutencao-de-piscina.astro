@@ -41,6 +41,20 @@ const maintenanceSteps = [
     text: "Aspire o fundo da piscina regularmente para remover detritos e sujeira acumulada, e drene a água conforme necessário para manter a piscina limpa.",
   },
 ];
+
+const heroMobileSrc = "/image/generated/empresa-de-manutencao-de-piscina-m-768.webp";
+const heroDesktopSrc = "/image/generated/empresa-de-manutencao-de-piscina-1280.webp";
+const heroDesktopSrcSet = "/image/generated/empresa-de-manutencao-de-piscina-960.webp 960w, /image/generated/empresa-de-manutencao-de-piscina-1280.webp 1280w, /image/generated/empresa-de-manutencao-de-piscina-1600.webp 1600w";
+const heroSizes = "100vw";
+const featuredMaintenanceSrc = "/image/generated/manutencao-de-piscina-640.webp";
+const featuredMaintenanceSrcSet = "/image/generated/manutencao-de-piscina-480.webp 480w, /image/generated/manutencao-de-piscina-640.webp 640w, /image/generated/manutencao-de-piscina-960.webp 960w";
+const featuredMaintenanceSizes = "(min-width: 1024px) 55vw, 100vw";
+const startedMaintenanceSrc = "/image/generated/reforma-piscina-de-fibra-640.webp";
+const startedMaintenanceSrcSet = "/image/generated/reforma-piscina-de-fibra-480.webp 480w, /image/generated/reforma-piscina-de-fibra-640.webp 640w, /image/generated/reforma-piscina-de-fibra-800.webp 800w";
+const startedMaintenanceSizes = "(min-width: 768px) 42vw, 100vw";
+const finishedMaintenanceSrc = "/image/generated/conserto-de-piscina-de-fibra-640.webp";
+const finishedMaintenanceSrcSet = "/image/generated/conserto-de-piscina-de-fibra-480.webp 480w, /image/generated/conserto-de-piscina-de-fibra-640.webp 640w, /image/generated/conserto-de-piscina-de-fibra-720.webp 720w, /image/generated/conserto-de-piscina-de-fibra-960.webp 960w";
+const finishedMaintenanceSizes = "(min-width: 768px) 42vw, 100vw";
 ---
 
 <BaseLayout
@@ -48,15 +62,19 @@ const maintenanceSteps = [
   description="Especialistas em manutenção de piscina de fibra. A forma correta e adequada de revitalizar sua piscina para garantir durabilidade e segurança."
   canonical="https://casaepiscina.com.br/manutencao-de-piscina/"
   image="/image/empresa-de-manutencao-de-piscina.webp"
+  imagePreloads={[
+    { href: heroMobileSrc, media: "(max-width: 767px)" },
+    { href: heroDesktopSrc, media: "(min-width: 768px)", imagesrcset: heroDesktopSrcSet, imagesizes: heroSizes },
+  ]}
 >
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Manutenção de Piscina de Fibra", url: "/manutencao-de-piscina/" }]} />
 
   <section class="relative isolate overflow-hidden bg-brand-ink">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.74), rgba(14, 36, 48, 0.62)), url('/image/empresa-de-manutencao-de-piscina.webp')`}
-      aria-hidden="true"
-    />
+    <picture class="absolute inset-0 block h-full w-full" aria-hidden="true">
+      <source media="(min-width: 768px)" srcset={heroDesktopSrcSet} sizes={heroSizes} />
+      <img class="h-full w-full object-cover object-center" src={heroMobileSrc} alt="" width="768" height="768" loading="eager" fetchpriority="high" decoding="async" />
+    </picture>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(14,36,48,0.74),rgba(14,36,48,0.62))]" aria-hidden="true"></div>
     <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
       <div class="mx-auto max-w-5xl text-white">
         <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
@@ -85,7 +103,7 @@ const maintenanceSteps = [
             Aqui vamos mostrar que a manutenção correta e adequada de uma piscina é essencial para garantir sua durabilidade e segurança para sua família. Reunimos dicas e informações valiosas sobre como manter sua piscina de fibra em ótimas condições, preservando a qualidade da água e evitando desgastes que podem causar trincas e rachaduras.
           </p>
           <figure class="mt-8">
-            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src="/image/manutencao-de-piscina.jpg" alt="Manutenção de piscina de fibra em Belo Horizonte" loading="eager" />
+            <img class="media-rounded aspect-[16/9] w-full shadow-lg shadow-brand-ink/10" src={featuredMaintenanceSrc} srcset={featuredMaintenanceSrcSet} sizes={featuredMaintenanceSizes} alt="Manutenção de piscina de fibra em Belo Horizonte" width="640" height="288" loading="eager" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Manutenção de piscina de fibra com cuidado preventivo para preservar a estrutura e a qualidade da água.</figcaption>
           </figure>
           <div class="mt-8 rounded-lg border border-brand-line bg-[#f4f7f8] p-6">
@@ -125,7 +143,7 @@ const maintenanceSteps = [
             </div>
           </div>
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra.webp" alt="Manutenção de piscina de fibra iniciada em Belo Horizonte" loading="lazy" />
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={startedMaintenanceSrc} srcset={startedMaintenanceSrcSet} sizes={startedMaintenanceSizes} alt="Manutenção de piscina de fibra iniciada em Belo Horizonte" width="640" height="640" loading="lazy" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Piscina com manutenção iniciada e adiantando para fazer a instalação.</figcaption>
           </figure>
         </section>
@@ -139,7 +157,7 @@ const maintenanceSteps = [
 
         <section id="filtro" class="mt-14 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <figure class="md:order-1">
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/conserto-de-piscina-de-fibra.webp" alt="Manutenção completa de piscina de fibra" loading="lazy" />
+            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={finishedMaintenanceSrc} srcset={finishedMaintenanceSrcSet} sizes={finishedMaintenanceSizes} alt="Manutenção completa de piscina de fibra" width="640" height="640" loading="lazy" decoding="async" />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Manutenção de piscina completa, agora já terminamos de fazer a reforma.</figcaption>
           </figure>
           <div class="md:order-2">

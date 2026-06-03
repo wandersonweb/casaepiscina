@@ -25,6 +25,16 @@ const modernizationTips = [
   "Instale um deck de madeira: um deck ao redor da piscina cria um ambiente elegante e acolhedor.",
   "Utilize revestimentos modernos: pastilhas coloridas ou azulejos com desenhos geométricos podem adicionar um toque contemporâneo.",
 ];
+
+const heroDesktopSrc = "/image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp";
+const heroDesktopSrcSet = "/image/generated/reforma-de-piscina-de-fibra-em-bh-960.webp 960w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp 1280w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1440.webp 1440w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1600.webp 1600w";
+const heroSizes = "100vw";
+const restoredPoolSrc = "/image/generated/piscinas-belo-horizonte-480.webp";
+const restoredPoolSrcSet = "/image/generated/piscinas-belo-horizonte-480.webp 480w, /image/generated/piscinas-belo-horizonte-640.webp 640w, /image/generated/piscinas-belo-horizonte-720.webp 720w";
+const restoredPoolSizes = "(min-width: 768px) 42vw, 100vw";
+const repairPoolSrc = "/image/generated/reforma-piscina-de-fibra-480.webp";
+const repairPoolSrcSet = "/image/generated/reforma-piscina-de-fibra-480.webp 480w, /image/generated/reforma-piscina-de-fibra-640.webp 640w, /image/generated/reforma-piscina-de-fibra-800.webp 800w";
+const repairPoolSizes = "(min-width: 768px) 38vw, 100vw";
 ---
 
 <BaseLayout
@@ -32,15 +42,28 @@ const modernizationTips = [
   description="Reforma de piscina de fibra em BH com reparo de trincas, vazamentos, pintura, restauração e revitalização completa. Solicite orçamento pelo WhatsApp."
   canonical="https://casaepiscina.com.br/reforma-de-piscina-de-fibra-em-belo-horizonte/"
   image="/image/reforma-de-piscina-de-fibra-em-bh.webp"
+  imagePreloads={[
+    { href: heroDesktopSrc, imagesrcset: heroDesktopSrcSet, imagesizes: heroSizes },
+  ]}
 >
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Reforma de Piscina de Fibra em BH", url: "/reforma-de-piscina-de-fibra-em-belo-horizonte/" }]} />
 
   <section class="relative isolate overflow-hidden bg-brand-ink">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.74), rgba(14, 36, 48, 0.62)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
-      aria-hidden="true"
-    />
+    <picture class="absolute inset-0 block h-full w-full" aria-hidden="true">
+      <img
+        class="h-full w-full object-cover object-center"
+        src={heroDesktopSrc}
+        srcset={heroDesktopSrcSet}
+        sizes={heroSizes}
+        alt=""
+        width="1280"
+        height="720"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(14,36,48,0.74),rgba(14,36,48,0.62))]" aria-hidden="true"></div>
     <div class="relative container-site flex min-h-[430px] items-center justify-center py-20 text-center md:min-h-[520px]">
       <div class="mx-auto max-w-5xl text-white">
         <p class="text-sm font-black uppercase tracking-[0.14em] text-white/75">Belo Horizonte e região metropolitana</p>
@@ -105,7 +128,17 @@ const modernizationTips = [
             </div>
           </div>
           <figure>
-            <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/piscinas-belo-horizonte.jpg" alt="Piscina depois de completamente reformada em Belo Horizonte" loading="lazy" />
+            <img
+              class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+              src={restoredPoolSrc}
+              srcset={restoredPoolSrcSet}
+              sizes={restoredPoolSizes}
+              alt="Piscina depois de completamente reformada em Belo Horizonte"
+              width="480"
+              height="480"
+              loading="lazy"
+              decoding="async"
+            />
             <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Aqui está a piscina depois de completamente reformada.</figcaption>
           </figure>
         </section>
@@ -146,7 +179,17 @@ const modernizationTips = [
               </div>
             </div>
             <figure>
-              <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/reforma-piscina-de-fibra-jpg.webp" alt="Reforma de piscina grande de fibra" loading="lazy" />
+              <img
+                class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10"
+                src={repairPoolSrc}
+                srcset={repairPoolSrcSet}
+                sizes={repairPoolSizes}
+                alt="Reforma de piscina grande de fibra"
+                width="480"
+                height="360"
+                loading="lazy"
+                decoding="async"
+              />
               <figcaption class="mt-3 text-sm font-semibold text-brand-muted">Reformando uma piscina grande, a área de um apartamento.</figcaption>
             </figure>
           </div>

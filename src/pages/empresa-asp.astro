@@ -81,6 +81,15 @@ const itemListSchema = {
     url: new URL(city.href, "https://casaepiscina.com.br").toString(),
   })),
 };
+
+const heroMobileSrc = "/image/generated/reforma-de-piscina-de-fibra-em-bh-M-640.webp";
+const heroMobileSrcSet = "/image/generated/reforma-de-piscina-de-fibra-em-bh-M-640.webp 640w, /image/generated/reforma-de-piscina-de-fibra-em-bh-M-960.webp 960w";
+const heroDesktopSrc = "/image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp";
+const heroDesktopSrcSet = "/image/generated/reforma-de-piscina-de-fibra-em-bh-960.webp 960w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1280.webp 1280w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1440.webp 1440w, /image/generated/reforma-de-piscina-de-fibra-em-bh-1600.webp 1600w";
+const heroSizes = "100vw";
+const servedCitiesImageSrc = "/image/generated/piscinas-belo-horizonte-480.webp";
+const servedCitiesImageSrcSet = "/image/generated/piscinas-belo-horizonte-480.webp 480w, /image/generated/piscinas-belo-horizonte-640.webp 640w, /image/generated/piscinas-belo-horizonte-720.webp 720w";
+const servedCitiesImageSizes = "(min-width: 1024px) 45vw, 100vw";
 ---
 
 <BaseLayout
@@ -88,16 +97,20 @@ const itemListSchema = {
   description={description}
   canonical={canonical}
   image="/image/conserto-de-piscina-de-fibra.webp"
+  imagePreloads={[
+    { href: heroMobileSrc, media: "(max-width: 767px)", imagesrcset: heroMobileSrcSet, imagesizes: heroSizes },
+    { href: heroDesktopSrc, media: "(min-width: 768px)", imagesrcset: heroDesktopSrcSet, imagesizes: heroSizes },
+  ]}
 >
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Cidades Atendidas", url: "/empresa-asp/" }]} />
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
 
   <section class="relative isolate overflow-hidden bg-brand-ink">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={`background-image: linear-gradient(rgba(14, 36, 48, 0.78), rgba(14, 36, 48, 0.62)), url('/image/reforma-de-piscina-de-fibra-em-bh.webp')`}
-      aria-hidden="true"
-    />
+    <picture class="absolute inset-0 block h-full w-full" aria-hidden="true">
+      <source media="(min-width: 768px)" srcset={heroDesktopSrcSet} sizes={heroSizes} />
+      <img class="h-full w-full object-cover object-center" src={heroMobileSrc} srcset={heroMobileSrcSet} sizes={heroSizes} alt="" width="960" height="1280" loading="eager" fetchpriority="high" decoding="async" />
+    </picture>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(14,36,48,0.78),rgba(14,36,48,0.62))]" aria-hidden="true"></div>
     <div class="relative container-site grid min-h-[560px] gap-10 py-20 md:grid-cols-[1fr_0.78fr] md:items-center md:py-24">
       <div class="text-white">
         <p class="eyebrow text-white/78">Atendimento regional</p>
@@ -213,7 +226,7 @@ const itemListSchema = {
           </p>
         </div>
       </div>
-      <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src="/image/piscinas-belo-horizonte.jpg" alt="Piscina de fibra reformada em cidade atendida pela Casa e Piscina" loading="lazy" />
+      <img class="media-rounded aspect-[4/3] w-full shadow-lg shadow-brand-ink/10" src={servedCitiesImageSrc} srcset={servedCitiesImageSrcSet} sizes={servedCitiesImageSizes} alt="Piscina de fibra reformada em cidade atendida pela Casa e Piscina" width="480" height="480" loading="lazy" decoding="async" />
     </div>
   </section>
 
