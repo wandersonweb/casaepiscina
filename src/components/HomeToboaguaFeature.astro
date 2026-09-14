@@ -1,0 +1,93 @@
+---
+interface Props {
+  primaryImage?: {
+    src: string;
+    alt: string;
+    srcset?: string;
+    sizes?: string;
+  };
+  processImage?: {
+    src: string;
+    alt: string;
+    srcset?: string;
+    sizes?: string;
+  };
+}
+
+const { primaryImage, processImage } = Astro.props;
+---
+
+<section class="bg-brand-ink py-14 text-white md:py-20">
+  <div class="container-site rounded-lg border border-white/15 bg-brand-ink p-3 shadow-2xl shadow-black/15">
+    <div class="grid gap-4 lg:min-h-[760px] lg:grid-cols-[minmax(0,0.724fr)_minmax(0,1fr)] lg:grid-rows-[minmax(0,1.38fr)_minmax(0,1fr)]">
+      <div class="relative order-1 min-h-[280px] overflow-hidden rounded-lg bg-brand-ocean-dark sm:min-h-[340px] lg:col-start-1 lg:row-start-1 lg:min-h-0" data-image-slot="toboagua-principal">
+        {primaryImage ? (
+          <img
+            src={primaryImage.src}
+            srcset={primaryImage.srcset}
+            sizes={primaryImage.sizes}
+            alt={primaryImage.alt}
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div class="absolute inset-0" aria-hidden="true">
+            <div class="absolute -left-24 -top-24 h-72 w-72 rounded-full border-[44px] border-cyan-300/20"></div>
+            <div class="absolute -bottom-28 -right-20 h-80 w-80 rounded-full border-[52px] border-teal-300/15"></div>
+            <div class="absolute inset-7 rounded-lg border border-white/15"></div>
+          </div>
+        )}
+      </div>
+
+      <div class="order-2 flex items-center p-4 sm:p-7 lg:col-start-2 lg:row-span-2 lg:p-9 xl:p-12">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.14em] text-cyan-100">Serviço especializado em fibra de vidro</p>
+          <h2 class="mt-5 text-3xl font-black leading-tight text-white md:text-4xl">Reforma de Toboágua e Tobogã</h2>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-white/80">
+            <p>A Casa e Piscina também atua na reforma e recuperação de toboáguas e tobogãs em fibra de vidro, atendendo equipamentos com trincas, desgaste, vazamentos, problemas nas junções e acabamento deteriorado.</p>
+            <p>Realizamos desde reparos localizados até revitalizações mais completas, incluindo recuperação da fibra, correção de emendas, pintura, acabamento e manutenção.</p>
+            <p>Atendemos clubes, condomínios, hotéis, resorts e parques aquáticos em Belo Horizonte e diferentes cidades de Minas Gerais.</p>
+          </div>
+
+          <div class="mt-8 grid gap-3 sm:grid-cols-3">
+            <a class="rounded-md border border-white/15 bg-white/5 p-4 transition-colors duration-200 hover:bg-white/10" href="/servicos/reparo-fibra-de-vidro-toboagua/">
+              <p class="font-bold text-white">Reparo em Fibra</p>
+              <p class="mt-2 text-sm leading-6 text-white/70">Trincas, rachaduras, delaminações e peças danificadas.</p>
+            </a>
+            <a class="rounded-md border border-white/15 bg-white/5 p-4 transition-colors duration-200 hover:bg-white/10" href="/servicos/pintura-de-toboagua/">
+              <p class="font-bold text-white">Pintura e Revitalização</p>
+              <p class="mt-2 text-sm leading-6 text-white/70">Recuperação do acabamento e sistemas de pintura para fibra de vidro.</p>
+            </a>
+            <a class="rounded-md border border-white/15 bg-white/5 p-4 transition-colors duration-200 hover:bg-white/10" href="/servicos/manutencao-de-toboagua/">
+              <p class="font-bold text-white">Manutenção</p>
+              <p class="mt-2 text-sm leading-6 text-white/70">Avaliação de juntas, vazamentos, superfícies e sinais de desgaste.</p>
+            </a>
+          </div>
+
+          <a class="btn btn-lg btn-primary mt-8 w-full sm:w-auto" href="/reforma-de-toboagua/">Conheça nosso serviço de Reforma de Toboágua</a>
+        </div>
+      </div>
+
+      <div class="relative order-3 min-h-[220px] overflow-hidden rounded-lg bg-brand-ocean-dark sm:min-h-[280px] lg:col-start-1 lg:row-start-2 lg:min-h-0" data-image-slot="toboagua-processo">
+        {processImage ? (
+          <img
+            src={processImage.src}
+            srcset={processImage.srcset}
+            sizes={processImage.sizes}
+            alt={processImage.alt}
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div class="absolute inset-0" aria-hidden="true">
+            <div class="absolute -right-20 -top-24 h-72 w-72 rounded-full border-[44px] border-cyan-300/20"></div>
+            <div class="absolute -bottom-32 -left-16 h-80 w-80 rounded-full border-[52px] border-teal-300/15"></div>
+            <div class="absolute inset-7 rounded-lg border border-white/15"></div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BreadcrumbSchema from "./BreadcrumbSchema.astro";
+import { siteConfig, whatsappUrl } from "../data/site";
+import { allToboaguaRelatedLinks, pageUrl, pillarUrl, type SiloPage } from "../data/toboaguaSilo";
+import KamikazeContent from "./KamikazeContent.astro";
+import PaintingContent from "./PaintingContent.astro";
+import InfantilContent from "./InfantilContent.astro";
+import TubularContent from "./TubularContent.astro";
+import FiberRepairContent from "./FiberRepairContent.astro";
+import MaintenanceContent from "./MaintenanceContent.astro";
+import ParksResortsContent from "./ParksResortsContent.astro";
+import CondominiumsClubsContent from "./CondominiumsClubsContent.astro";
+import ToboaguaHeroBackground from "./ToboaguaHeroBackground.astro";
+import ToboaguaContentGallery from "./ToboaguaContentGallery.astro";
+
+interface Props { page: SiloPage }
+const { page } = Astro.props;
+const url = pageUrl(page);
+const related = allToboaguaRelatedLinks(url);
+const contactUrl = whatsappUrl("Olá! Gostaria de solicitar orçamento para reforma de toboágua ou tobogã.");
+const isKamikaze = page.slug === "kamikaze";
+const isPainting = page.slug === "pintura-de-toboagua";
+const isInfantil = page.slug === "infantil";
+const isTubular = page.slug === "tubo-fechado";
+const isFiberRepair = page.slug === "reparo-fibra-de-vidro-toboagua";
+const isMaintenance = page.slug === "manutencao-de-toboagua";
+const isParksResorts = page.slug === "parques-aquaticos-resorts";
+const isCondominiumsClubs = page.slug === "condominios-e-clubes";
+---
+
+<BaseLayout title={page.seoTitle} description={page.description} canonical={`https://casaepiscina.com.br${url}`}>
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Reforma de Toboágua", url: pillarUrl }, { name: page.title, url }]} />
+  <section class="relative isolate overflow-hidden bg-brand-ink py-16 text-white md:py-20">
+    <ToboaguaHeroBackground />
+    <div class="relative container-site max-w-4xl text-center">
+      <nav class="mb-8 flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-white/70" aria-label="Caminho de navegação">
+        <a class="hover:text-white" href="/">Início</a><span aria-hidden="true">/</span><a class="hover:text-white" href={pillarUrl}>Reforma de Toboágua</a><span aria-hidden="true">/</span><span aria-current="page">{page.title}</span>
+      </nav>
+      <p class="text-sm font-black uppercase tracking-[0.14em] text-cyan-100">{page.eyebrow} · Belo Horizonte e Minas Gerais</p>
+      <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">{page.title}</h1>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/84">{isKamikaze ? "A Casa e Piscina realiza reforma de toboágua Kamikaze, recuperando atrações com desgaste na pista, irregularidades entre módulos, peças danificadas e acabamento deteriorado." : isPainting ? "A Casa e Piscina realiza pintura de toboágua e tobogã em fibra de vidro, recuperando superfícies desbotadas, opacas, desgastadas ou com acabamento deteriorado." : isInfantil ? "A Casa e Piscina realiza reforma de toboágua infantil e tobogã infantil em fibra de vidro, recuperando superfícies desgastadas, bordas deterioradas, irregularidades, peças danificadas ou acabamento comprometido." : isTubular ? "A Casa e Piscina realiza reforma de toboágua fechado e tubular em fibra de vidro, recuperando equipamentos com vazamentos nas junções, desgaste interno, peças danificadas ou acabamento comprometido." : isFiberRepair ? "A Casa e Piscina realiza reparo de fibra de vidro em toboáguas e tobogãs, recuperando peças com trincas, rachaduras, delaminações, furos, bordas danificadas e regiões deterioradas do laminado." : isMaintenance ? "A Casa e Piscina realiza manutenção de toboágua e tobogã, verificando sinais de desgaste na fibra de vidro, juntas, acabamento, fixações e demais componentes incluídos no serviço." : isParksResorts ? "A Casa e Piscina atende parques aquáticos, hotéis e resorts que precisam recuperar toboáguas e atrações aquáticas em fibra de vidro." : isCondominiumsClubs ? "A Casa e Piscina realiza reforma de toboáguas e tobogãs instalados em condomínios e clubes, conforme as condições do equipamento e da área de lazer." : page.intro}</p>
+      <a class="btn btn-lg btn-primary mt-8" href={contactUrl} target="_blank" rel="nofollow noopener">Solicitar orçamento</a>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_330px]">
+      <div class="min-w-0">
+      {isKamikaze ? <KamikazeContent /> : isPainting ? <PaintingContent /> : isInfantil ? <InfantilContent /> : isTubular ? <TubularContent /> : isFiberRepair ? <FiberRepairContent /> : isMaintenance ? <MaintenanceContent /> : isParksResorts ? <ParksResortsContent /> : isCondominiumsClubs ? <CondominiumsClubsContent /> : <article>
+        <p class="eyebrow">O que analisamos</p>
+        <h2 class="mt-4 section-title">Uma solução adequada começa por uma boa avaliação</h2>
+        <ul class="mt-7 grid gap-4 sm:grid-cols-2">
+          {page.focus.map((item) => <li class="rounded-lg border border-brand-line bg-brand-ocean-pale p-5 font-semibold text-brand-ink">{item}</li>)}
+        </ul>
+        <div class="mt-12 space-y-10">
+          {page.details.map((detail) => (
+            <section>
+              <h2 class="text-2xl font-black leading-tight text-brand-ink md:text-3xl">{detail.heading}</h2>
+              <p class="mt-4 text-lg leading-8 text-brand-muted">{detail.text}</p>
+            </section>
+          ))}
+        </div>
+        <section class="mt-12 rounded-lg bg-brand-ocean-pale p-7 md:p-9">
+          <h2 class="text-2xl font-black text-brand-ink">Atendimento para {page.audience}</h2>
+          <p class="mt-4 leading-7 text-brand-muted">Envie imagens do equipamento e explique a necessidade. Nossa equipe orienta o caminho mais adequado para o seu caso.</p>
+          <a class="btn btn-primary mt-6" href={contactUrl} target="_blank" rel="nofollow noopener">Falar pelo WhatsApp</a>
+        </section>
+      </article>}
+      <ToboaguaContentGallery />
+      </div>
+      <aside class="h-fit lg:sticky lg:top-28">
+        <div class="rounded-lg bg-brand-ink p-6 text-white">
+          <p class="text-xl font-black">Reforma de toboágua</p>
+          <p class="mt-3 text-sm leading-6 text-white/75">Conheça a página principal do serviço, com visão geral das soluções de manutenção e recuperação.</p>
+          <a class="btn btn-primary mt-5 w-full" href={pillarUrl}>Ver serviço principal</a>
+        </div>
+        <nav class="card mt-5 p-6" aria-label="Outros serviços relacionados">
+          <p class="text-lg font-black text-brand-ink">Serviços relacionados</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            {related.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bg-brand-ink py-16 text-white">
+    <div class="container-site text-center">
+      <h2 class="text-3xl font-black leading-tight md:text-4xl">Precisa avaliar seu equipamento?</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/78">Fale com a Casa e Piscina e solicite uma orientação inicial para sua atração aquática.</p>
+      <a class="btn btn-lg btn-primary mt-7" href={contactUrl} target="_blank" rel="nofollow noopener">Solicitar orçamento</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+import ToboaguaSiloPage from "../../components/ToboaguaSiloPage.astro";
+import { toboaguaSiloPages } from "../../data/toboaguaSilo";
+
+export function getStaticPaths() {
+  return toboaguaSiloPages.filter((page) => page.section === "reforma-de-toboagua").map((page) => ({ params: { slug: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+---
+<ToboaguaSiloPage page={page} />

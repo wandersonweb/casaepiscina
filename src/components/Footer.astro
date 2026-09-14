@@ -2,8 +2,8 @@
 import { siteConfig, whatsappUrl } from "../data/site";
 ---
 
-<footer class="bg-brand-ink pb-8 pt-14 text-white/78">
-  <div class="container-site grid gap-10 md:grid-cols-3">
+<footer class="footer-links bg-brand-ink pb-8 pt-14 text-white/78">
+  <div class="container-site grid gap-10 md:grid-cols-2 lg:grid-cols-4">
     <div>
       <p class="text-xl font-bold text-white">{siteConfig.name}</p>
       <p class="mt-4 leading-7 text-white/65">Empresa local especializada em reforma, pintura e manutenção de piscinas de fibra em Belo Horizonte e região metropolitana.</p>
@@ -15,6 +15,15 @@ import { siteConfig, whatsappUrl } from "../data/site";
         <li><a href="/manutencao-de-piscina/">Manutenção de Piscina</a></li>
         <li><a href="/pintura-de-piscina-de-fibra/">Pintura de Piscina de Fibra</a></li>
         <li><a href="/reforma-de-caixa-da-agua/">Reforma de Caixa d'água</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-xl font-bold text-white">Toboágua</p>
+      <ul class="link-list mt-4 space-y-3 text-white/65">
+        <li><a href="/reforma-de-toboagua/">Reforma de Toboágua</a></li>
+        <li><a href="/reforma-de-toboagua/kamikaze/">Toboágua Kamikaze</a></li>
+        <li><a href="/reforma-de-toboagua/infantil/">Toboágua Infantil</a></li>
+        <li><a href="/reforma-de-toboagua/tubo-fechado/">Toboágua Fechado e Tubular</a></li>
       </ul>
     </div>
     <div>
@@ -36,3 +45,9 @@ import { siteConfig, whatsappUrl } from "../data/site";
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-links .link-list a:hover {
+    color: #cffafe;
+  }
+</style>

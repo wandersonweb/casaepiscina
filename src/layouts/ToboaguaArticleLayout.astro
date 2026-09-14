@@ -1,0 +1,66 @@
+---
+import ArticleSchema from "../components/ArticleSchema.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import BaseLayout from "./BaseLayout.astro";
+import { whatsappUrl } from "../data/site";
+import { allToboaguaRelatedLinks } from "../data/toboaguaSilo";
+import ToboaguaHeroBackground from "../components/ToboaguaHeroBackground.astro";
+import ToboaguaContentGallery from "../components/ToboaguaContentGallery.astro";
+
+const { frontmatter } = Astro.props;
+const isTrincas = frontmatter.permalink === "trincas-toboagua-fibra";
+const articleLabel = isTrincas ? "Trincas em toboágua" : "Quando reformar um toboágua";
+const heroDescription = isTrincas
+  ? "Veja os sinais que ajudam a identificar trincas, rachaduras e desgaste na fibra de vidro do toboágua antes de definir o próximo passo."
+  : "Entenda quais sinais de desgaste ajudam a planejar a manutenção e a reforma de um toboágua.";
+const contactUrl = whatsappUrl("Olá! Gostaria de solicitar orçamento para reforma de toboágua ou tobogã.");
+const related = allToboaguaRelatedLinks(isTrincas ? "/trincas-toboagua-fibra/" : "/quando-reformar-toboagua/");
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description} canonical={frontmatter.canonical} image={frontmatter.image}>
+  <ArticleSchema title={frontmatter.title} description={frontmatter.description} canonical={frontmatter.canonical} image={frontmatter.image} date={frontmatter.date?.toISOString?.() ?? frontmatter.date} />
+  <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog/" }, { name: frontmatter.h1 ?? frontmatter.title, url: frontmatter.canonical }]} />
+
+  <section class="relative isolate overflow-hidden bg-brand-ink py-16 text-white md:py-20">
+    <ToboaguaHeroBackground />
+    <div class="relative container-site max-w-4xl text-center">
+      <nav class="mb-8 flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-white/70" aria-label="Caminho de navegação">
+        <a class="hover:text-white" href="/">Início</a><span aria-hidden="true">/</span><a class="hover:text-white" href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">{articleLabel}</span>
+      </nav>
+      <p class="text-sm font-black uppercase tracking-[0.14em] text-cyan-100">Conteúdo informativo</p>
+      <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">{frontmatter.h1 ?? frontmatter.title}</h1>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/84">{heroDescription}</p>
+      <a class="btn btn-lg btn-primary mt-8" href={contactUrl} target="_blank" rel="nofollow noopener">{isTrincas ? "Enviar fotos pelo WhatsApp" : "Solicitar avaliação pelo WhatsApp"}</a>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_330px]">
+      <div class="min-w-0">
+        <article class="prose !mx-0 !max-w-none"><slot /></article>
+        <ToboaguaContentGallery />
+      </div>
+      <aside class="h-fit lg:sticky lg:top-28">
+        <div class="rounded-lg bg-brand-ink p-6 text-white">
+          <p class="text-xl font-black">{isTrincas ? "Reparo em fibra de vidro" : "Manutenção de toboágua"}</p>
+          <p class="mt-3 text-sm leading-6 text-white/75">{isTrincas ? "Quando há dano no laminado, a avaliação identifica a alternativa adequada antes do acabamento." : "Acompanhamento periódico ajuda a identificar desgaste antes que ele exija uma intervenção maior."}</p>
+          <a class="btn btn-primary mt-5 w-full" href={isTrincas ? "/servicos/reparo-fibra-de-vidro-toboagua/" : "/servicos/manutencao-de-toboagua/"}>{isTrincas ? "Conhecer o serviço" : "Ver manutenção"}</a>
+        </div>
+        <nav class="card mt-5 p-6" aria-label="Páginas relacionadas">
+          <p class="text-lg font-black text-brand-ink">Serviços relacionados</p>
+          <ul class="link-list mt-4 space-y-3 text-sm font-semibold text-brand-muted">
+            {related.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bg-brand-ink py-16 text-white">
+    <div class="container-site text-center">
+      <h2 class="text-3xl font-black leading-tight md:text-4xl">{isTrincas ? "Identificou uma trinca no toboágua?" : "Seu toboágua apresenta sinais de desgaste?"}</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/78">{isTrincas ? "Envie fotos da região para uma orientação inicial sobre os próximos passos." : "Envie fotos e informações do equipamento para uma orientação inicial."}</p>
+      <a class="btn btn-lg btn-primary mt-7" href={contactUrl} target="_blank" rel="nofollow noopener">{isTrincas ? "Enviar fotos pelo WhatsApp" : "Solicitar avaliação pelo WhatsApp"}</a>
+    </div>
+  </section>
+</BaseLayout>

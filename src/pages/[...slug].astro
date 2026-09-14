@@ -4,6 +4,7 @@ import CityHomeTemplate from "../components/CityHomeTemplate.astro";
 import CTAWhatsapp from "../components/CTAWhatsapp.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostLayout from "../layouts/PostLayout.astro";
+import ToboaguaArticleLayout from "../layouts/ToboaguaArticleLayout.astro";
 import { cityPages, cityPageSlugs } from "../data/cityPages";
 import { legacyPages } from "../data/legacyPages";
 import { getCollection, render } from "astro:content";
@@ -56,6 +57,7 @@ const isCityPage = Boolean(cityPage);
 const isPost = Boolean(post);
 const renderedPost = isPost ? await render(post) : null;
 const Content = renderedPost?.Content;
+const isToboaguaArticlePost = ["trincas-toboagua-fibra", "quando-reformar-toboagua"].includes(post?.data.permalink ?? "");
 const isLegacyPage = !isCityPage && !isPost;
 const firstImage = isLegacyPage ? (page.images[0] ?? { src: page.image, alt: page.imageAlt }) : null;
 const hasH1 = isLegacyPage && page.headings.some((heading) => heading.level === 1);
@@ -67,9 +69,15 @@ const paragraphs = isLegacyPage && page.paragraphs.length > 0
 {isCityPage ? (
   <CityHomeTemplate {...cityPage} />
 ) : isPost && Content ? (
+  isToboaguaArticlePost ? (
+    <ToboaguaArticleLayout frontmatter={post.data}>
+      <Content />
+    </ToboaguaArticleLayout>
+  ) : (
   <PostLayout frontmatter={post.data}>
     <Content />
   </PostLayout>
+  )
 ) : (
 <BaseLayout title={page.title} description={page.description} canonical={page.canonical} image={page.image}>
   <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: page.title, url: page.url }]} />

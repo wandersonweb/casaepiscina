@@ -56,7 +56,7 @@ img {
   }
 
   ::selection {
-    background: rgb(14 36 48 / 0.16);
+    background: #a5f3fc;
     color: var(--color-ink);
   }
 }

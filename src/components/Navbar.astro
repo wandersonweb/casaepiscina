@@ -8,6 +8,35 @@ const links = [
   { href: "/empresa-asp/", label: "Cidades Atendidas" },
   { href: "/contato/", label: "Contato" },
 ];
+
+const toboaguaGroups = [
+  {
+    label: "Visão geral",
+    links: [
+      { href: "/reforma-de-toboagua/", label: "Reforma de toboágua" },
+      { href: "/reforma-de-toboagua/kamikaze/", label: "Toboágua Kamikaze" },
+      { href: "/reforma-de-toboagua/infantil/", label: "Toboágua infantil" },
+      { href: "/reforma-de-toboagua/tubo-fechado/", label: "Toboágua fechado e tubular" },
+    ],
+  },
+  {
+    label: "Serviços",
+    links: [
+      { href: "/servicos/pintura-de-toboagua/", label: "Pintura de toboágua" },
+      { href: "/servicos/reparo-fibra-de-vidro-toboagua/", label: "Reparo de fibra de vidro" },
+      { href: "/servicos/manutencao-de-toboagua/", label: "Manutenção de toboágua" },
+      { href: "/servicos/parques-aquaticos-resorts/", label: "Parques, hotéis e resorts" },
+      { href: "/servicos/condominios-e-clubes/", label: "Clubes e condomínios" },
+    ],
+  },
+  {
+    label: "Conteúdos",
+    links: [
+      { href: "/quando-reformar-toboagua/", label: "Quando reformar um toboágua" },
+      { href: "/trincas-toboagua-fibra/", label: "Trincas em toboágua de fibra" },
+    ],
+  },
+];
 ---
 
 <header class="sticky top-0 z-40 border-b border-brand-line bg-brand-cream/95 backdrop-blur">
@@ -24,6 +53,24 @@ const links = [
     <div class="absolute left-0 right-0 top-20 hidden border-b border-brand-line bg-brand-cream p-4 shadow-lg peer-checked:block md:static md:block md:border-0 md:bg-transparent md:p-0 md:shadow-none">
       <div class="flex flex-col gap-3 md:flex-row md:items-center md:gap-7">
         {links.map((link) => <a class="text-sm font-semibold text-brand-muted transition-colors hover:text-brand-ink" href={link.href}>{link.label}</a>)}
+        <details class="group relative md:static">
+          <summary class="flex cursor-pointer list-none items-center gap-1 text-sm font-semibold text-brand-muted transition-colors hover:text-brand-ink marker:hidden">
+            Toboágua
+            <svg class="h-4 w-4 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5" /></svg>
+          </summary>
+          <div class="mt-3 rounded-lg border border-brand-line bg-white p-5 shadow-lg md:absolute md:left-1/2 md:top-full md:mt-4 md:w-[min(720px,calc(100vw-32px))] md:-translate-x-1/2">
+            <div class="grid gap-6 md:grid-cols-3">
+              {toboaguaGroups.map((group) => (
+                <section>
+                  <p class="text-sm font-black text-brand-ink">{group.label}</p>
+                  <ul class="mt-3 space-y-2.5">
+                    {group.links.map((link) => <li><a class="block text-sm font-semibold leading-5 text-brand-muted transition-colors hover:text-brand-ink" href={link.href}>{link.label}</a></li>)}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </div>
+        </details>
         <a class="btn btn-primary" href={whatsappUrl()} target="_blank" rel="nofollow noopener">
           {siteConfig.phone}
         </a>

@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import AboutSection from "../components/AboutSection.astro";
 import CTAWhatsapp from "../components/CTAWhatsapp.astro";
 import HomeFeatures from "../components/HomeFeatures.astro";
+import HomeToboaguaFeature from "../components/HomeToboaguaFeature.astro";
 import Hero from "../components/Hero.astro";
 import LatestPosts from "../components/LatestPosts.astro";
 import SocialProof from "../components/SocialProof.astro";
@@ -35,6 +36,17 @@ import { whatsappUrl } from "../data/site";
   <CTAWhatsapp />
 
   <LatestPosts />
+
+  <HomeToboaguaFeature
+    primaryImage={{
+      src: "/image/toboagua/Toboagua finalizado.webp",
+      alt: "Toboágua reformado",
+    }}
+    processImage={{
+      src: "/image/toboagua/toboagua em reforma.webp",
+      alt: "Processo de reforma de toboágua",
+    }}
+  />
 
   <section class="cta-band">
     <div class="container-site text-center">
